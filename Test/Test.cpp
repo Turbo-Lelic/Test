@@ -455,21 +455,26 @@
 //#include <iostream>
 //int main() { int str, min, res, cnt; std::cin >> str >> min >> res; for (int i = 0; i * str < res; i++, cnt += min) {} std::cout << cnt; }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#include <iostream>
-#include <vector>
-#include <algorithm>
+//#include <iostream>
+//#include <vector>
 
-using namespace std;
+//using namespace std;
 
-int main() {
-    int n, k; cin >> n >> k;
-    vector<int> arr(n);
+//int main() {
+//    int n; cin >> n;
+//    vector<int> arr(n);
+//    vector<int> cnt(10001);
 
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
-    }
+//    for (int i = 0; i < n; i++) {
+//        cin >> arr[i];
+//        cnt[arr[i]] += 1;
+//    }
+//    for (int i = 0; i <= 10000; i++) {
+//        for (int j = 0; j < cnt[i]; j++) {
+//            cout << i << ' ';
+//        }
+//    }
 
-    sort(arr.begin(), arr.end());
-    cout << arr[k - 1];
-    return 0;
-}
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
