@@ -499,47 +499,57 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <string>
+//#include <vector>
+
+//using namespace std;
+
+//int main() {
+//    int n, m, r, cnt = 0; cin >> n >> m >> r; // длина ответа | сколько учеников | придел
+//    vector<char> res(n); // ответ учителя
+//    vector<vector<char>> arr_res(m, vector<char> (n)); // ответы учеников
+//    vector<int> arr_cnt(m, 0), arr_max(m); // счетчик | максимальный счетчик
+
+//    for (int i = 0; i < n; i++) {
+//        cin >> res[i];
+//    }
+//    for (int i = 0; i < m; i++) {
+//        for (int j = 0; j < n; j++) {
+//            cin >> arr_res[i][j];
+//        }
+//    }
+//    for (int i = 0; i < m; i++) {
+//        for (int j = 0; j < n; j++) {
+//            if (res[j] != arr_res[i][j]) { // если элемент учителя не равен элементу ученика 
+//                arr_cnt[i] += 1;
+//            }
+//            if (res[j] == arr_res[i][j] || j == n - 1) { // если элемент учителя равен элемент ученика | или j проходит последний раз по циклу
+//                if (arr_max[i] < arr_cnt[i]) { // если максимальный счетчик меньше счетчика
+//                    arr_max[i] = arr_cnt[i], arr_cnt[i] = 0;
+//                }
+//            }
+//        }
+//    }
+//    for (int i = 0; i < m; i++) {
+//        cnt += arr_max[i];
+//        cout << arr_max[i] << endl;
+//    }
+//    if (cnt >= r) {
+//        cout << "YES";
+//    } else {
+//        cout << "NO";
+//    }
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <string>
-#include <vector>
 
 using namespace std;
 
 int main() {
-    int n, m, r, cnt = 0; cin >> n >> m >> r; // длина ответа | сколько учеников | придел
-    vector<char> res(n); // ответ учителя
-    vector<vector<char>> arr_res(m, vector<char> (n)); // ответы учеников
-    vector<int> arr_cnt(m, 0), arr_max(m); // счетчик | максимальный счетчик
 
-    for (int i = 0; i < n; i++) {
-        cin >> res[i];
-    }
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            cin >> arr_res[i][j];
-        }
-    }
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            if (res[j] != arr_res[i][j]) { // если элемент учителя не равен элементу ученика 
-                arr_cnt[i] += 1;
-            }
-            if (res[j] == arr_res[i][j] || j == n - 1) { // если элемент учителя равен элемент ученика | или j проходит последний раз по циклу
-                if (arr_max[i] < arr_cnt[i]) { // если максимальный счетчик меньше счетчика
-                    arr_max[i] = arr_cnt[i], arr_cnt[i] = 0;
-                }
-            }
-        }
-    }
-    for (int i = 0; i < m; i++) {
-        cnt += arr_max[i];
-        cout << arr_max[i] << endl;
-    }
-    if (cnt >= r) {
-        cout << "YES";
-    } else {
-        cout << "NO";
-    }
 
     return 0;
 }
