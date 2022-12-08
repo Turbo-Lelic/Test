@@ -544,49 +544,50 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <locale>
+//#include <iostream>
+//#include <fstream>
+//#include <string>
+//#include <locale>
 
-using namespace std;
+//using namespace std;
 
-signed main() {
-    setlocale(LC_ALL, "Russian");
+//signed main() {
+//    setlocale(LC_ALL, "Russian");
 
-    ofstream fail_input; ifstream fail_output; string str;
+//    ofstream fail_input; ifstream fail_output; string str;
 
-    // INPUT
-    fail_input.open("fail.txt"); // fail_input.open("fail.txt", ofstream::app);
-    if (!fail_input.is_open()) {
-        cout << "fail.txt не может быть изменен\n";
-        return 0;
-    } else if (fail_input.is_open()) {
-        cout << "fail.txt может быть изменен\n";
+//    // INPUT
+//    fail_input.open("fail.txt"); // fail_input.open("fail.txt", ofstream::app);
+//    if (!fail_input.is_open()) {
+//        cout << "fail.txt не может быть изменен\n";
+//        return 0;
+//    } else if (fail_input.is_open()) {
+//        cout << "fail.txt может быть изменен\n";
 
-        while (str != " ") {
-            getline(cin, str); fail_input << str << endl;
-        }
-    }
-    fail_input.close();
+//        while (str != " ") {
+//            getline(cin, str); fail_input << str << endl;
+//        }
+//    }
+//    fail_input.close();
 
-    // OUTPUT
-    fail_output.open("fail.txt");
-    if (!fail_output.is_open()) {
-        cout << "fail.txt не может быть открыт\n";
-        return 0;
-    } else if (fail_output.is_open()) {
-        cout << "fail.txt может быть открыт\n";
+//    // OUTPUT
+//    fail_output.open("fail.txt");
+//    if (!fail_output.is_open()) {
+//        cout << "fail.txt не может быть открыт\n";
+//        return 0;
+//    } else if (fail_output.is_open()) {
+//        cout << "fail.txt может быть открыт\n";
 
-        while (!fail_output.eof()) {
-            str = ""; getline(fail_output, str);
-            if (str != " ") {
-                cout << str << endl; 
-            }
-        }
-    }
-    fail_output.close();
+//        while (!fail_output.eof()) {
+//            str = ""; getline(fail_output, str);
+//            if (str != " ") {
+//                cout << str << endl; 
+//            }
+//        }
+//    }
+//    fail_output.close();
 
-    // RETURN 0
-    return 0;
-}
+//    // RETURN 0
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
