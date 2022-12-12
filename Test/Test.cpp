@@ -591,3 +591,28 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+signed main() {
+    int m, n, res = 0, cnt = 0; cin >> m >> n;
+    vector<int> arr(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    sort(arr.begin(), arr.end());
+    for (int i = 0; i < n; i++) {
+        if (cnt + arr[i] <= m) {
+            cnt += arr[i];
+        } else {
+            cnt = 0; res++;
+        }
+    }
+    cout << res;
+    
+    return 0;
+}
