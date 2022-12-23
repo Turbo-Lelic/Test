@@ -950,97 +950,85 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-using namespace std;
-
-typedef pair<int, int> ipair;
-
-bool comparator(ipair a, ipair b) {
-    if (a.second == b.second) {
-        return a.first > b.first;
-    } else {
-        return a.second < b.second;
-    }
-}
-
-signed main() {
-    int n, cnt = 0; cin >> n;
-    vector<ipair> arr(n);
-
-    for (int i = 0; i < n; i++) {
-        ipair p;
-        cin >> p.first >> p.second;
-        arr[i] = p;
-    }
-    sort(arr.begin(), arr.end(), comparator);
-
-    //проверка сортировки
-    cout << "\n";
-    for (int i = 0; i < n; i++) {
-        cout << arr[i].first << ' ' << arr[i].second << "\n";
-    }
-    cout << "\n";
-    //проверка сортировки
-
-    for (int i = 0; i + 1 < n; i++) {
-        if (arr[i].second <= arr[i + 1].first) {
-            cnt++;
-        }
-    }
-
-    cout << cnt + 1;
-    return 0;
-}
-//------------------------------------
-//4
-//2 3
-//3 4 ->> cnt++;
-//4 5 ->> cnt++;
-//1 5
-//------------------------------------
-//4
-//2 3 ->> cnt++;
-//3 4 ->> cnt++;
-//4 5 ->> cnt++;
-//1 5
-//------------------------------------
-//3
-//2 3
-//3 4 ->> cnt++;
-//1 5
-//------------------------------------
-//3
-//2 3 ->> cnt++;
-//3 4 ->> cnt++;
-//1 5
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //#include <iostream>
 //#include <vector>
 //#include <algorithm>
-//#include <string>
 
 //using namespace std;
 
+//typedef pair<int, int> ipair;
+
+//bool comparator(ipair a, ipair b) {
+//    if (a.second == b.second) {
+//        return a.first > b.first;
+//    } else {
+//        return a.second < b.second;
+//    }
+//}
+
 //signed main() {
-//    int w, h, cnt = 0; cin >> w >> h;
-//    vector<vector<string>> arr(h, vector<string>(1));
+//    int n, cnt = 0; cin >> n;
+//    vector<ipair> arr(n);
 
-//    for (int i = 0; i < h; i++) {
-//        for (int j = 0; j < 1; j++) {
-//            cin >> arr[i][j];
+//    for (int i = 0; i < n; i++) {
+//        ipair p;
+//        cin >> p.first >> p.second;
+//        arr[i] = p;
+//    }
+//    sort(arr.begin(), arr.end(), comparator);
 
-//            for (int l = 0; l < w; l++) {
-//                if (arr[i][j][l] == '1') {
-//                    cnt++;
-//                }
-//            }
+//    //проверка сортировки
+//    cout << "\n";
+//    for (int i = 0; i < n; i++) {
+//        cout << arr[i].first << ' ' << arr[i].second << "\n";
+//    }
+//    cout << "\n";
+//    //проверка сортировки
+
+//    for (int i = 0; i + 1 < n; i++) {
+//        if (arr[i].second <= arr[i + 1].first) {
+//            cnt++;
 //        }
 //    }
-//    cout << cnt;
 
+//    cout << cnt + 1;
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+signed main() {
+    int n, cnt = 1, cycle_cnt = 1; cin >> n; int copy_n = n;
+    vector<int> arr(n), arr_delenie(n * 2, 0);
+    copy_n /= 2, arr_delenie[(copy_n) + 1] = 1;
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i]; 
+    }
+    if (cycle_cnt == 1) {
+        for (int i = 0; i < copy_n; i++) {
+            for (int j = n - 1; j >= copy_n; j--) {
+                if (arr[i] != arr[j]) {
+
+                }
+            }
+//          if () { //если все числа в n массивах с друг другом не совподают
+//              cnt++;
+//          }
+//          else {
+//              cout << cnt; return 0;
+//          }
+            if (i == copy_n - 1) { copy_n /= 2, arr_delenie[(copy_n) + 1] = 1, cycle_cnt++; }
+        }
+    }
+    cout << cnt;
+        
+    return 0;
+}
+//создаем массив с числами {1,2,3,4} делим его на два {1,2,|,3,4} 
+//если числа в двух массивах не совподают то делим два массива еще на два {1,|,2,|,3,|,4}
+//если числа в четырех массивах не совподают то и делить на пополам нечего то выводим сколько же в итоге получилось бус
+//если при делении массива на пополам произошли совподения чисел то return 0 и выводим сколько же в итоге получилось бус
