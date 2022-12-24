@@ -1011,17 +1011,14 @@ signed main() {
     if (cycle_cnt == 1) {
         for (int i = 0; i < copy_n; i++) {
             for (int j = n - 1; j >= copy_n; j--) {
-                if (arr[i] != arr[j]) {
-
+                if (arr[i] == arr[j]) {
+                    cout << cnt; return 0;
                 }
             }
-//          if () { //если все числа в n массивах с друг другом не совподают
-//              cnt++;
-//          }
-//          else {
-//              cout << cnt; return 0;
-//          }
-            if (i == copy_n - 1) { copy_n /= 2, arr_delenie[(copy_n) + 1] = 1, cycle_cnt++; }
+            if (i == copy_n - 1) { 
+                copy_n /= 2, arr_delenie[(copy_n)+1] = 1; 
+                cycle_cnt = 1, cnt++;
+            }
         }
     }
     cout << cnt;
