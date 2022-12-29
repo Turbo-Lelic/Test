@@ -1001,50 +1001,39 @@
 //using namespace std;
 
 //signed main() {
-//    int n, cnt = 1, cycle_cnt = 1; cin >> n; int copy_n = n;
-//    vector<int> arr(n), arr_delenie(n * 2, 0);
-//    copy_n /= 2, arr_delenie[(copy_n) + 1] = 1;
+//    int n; cin >> n;
+//    vector<int> arr(n);
+//    vector<vector<int>> arr_copy(n, vector<int> (n));
 
 //    for (int i = 0; i < n; i++) {
-//        cin >> arr[i]; 
+//        cin >> arr[i];
 //    }
-//    if (cycle_cnt == 1) {
-//        for (int i = 0; i < copy_n; i++) {
-//            for (int j = n - 1; j >= copy_n; j--) {
-//                if (arr[i] == arr[j]) {
-//                    cout << cnt; return 0;
-//                }
+//    for (int i = 0; i < n; i++) {
+//        for (int j = 0; j < n; j++) {
+//            if (arr[i] % 10 == 1) {
+//                arr_copy[i][0] += 1; arr[i] = arr[i] % 10;
 //            }
-//            if (i == copy_n - 1) { 
-//                copy_n /= 2, arr_delenie[(copy_n)+1] = 1; 
-//                cycle_cnt = 1, cnt++;
+//            else if (arr[i] % 10 == 2) {
+//                arr_copy[i][1] += 1; arr[i] = arr[i] % 10;
+//            }
+//            else if (arr[i] % 10 == 3) {
+//                arr_copy[i][2] += 1; arr[i] = arr[i] % 10;
 //            }
 //        }
 //    }
-//    cout << cnt;
-        
+//    for (int i = 0; i < n; i++) {
+//        for (int j = 0; j < n; j++) {
+//            if (arr_copy[i][2] != 0) {
+//                cout << 3; arr_copy[i][2] -= 1;
+//            }
+//            else if (arr_copy[i][1] != 0 && arr_copy[i][2] == 0) {
+//                cout << 2; arr_copy[i][1] -= 1;
+//            }
+//            else if (arr_copy[i][0] != 0 && arr_copy[i][1] == 0) {
+//                cout << 1; arr_copy[i][0] -= 1;
+//            }
+//        }
+//    }
 //    return 0;
 //}
-//создаем массив с числами {1,2,3,4} делим его на два {1,2,|,3,4} 
-//если числа в двух массивах не совподают то делим два массива еще на два {1,|,2,|,3,|,4}
-//если числа в четырех массивах не совподают то и делить на пополам нечего то выводим сколько же в итоге получилось бус
-//если при делении массива на пополам произошли совподения чисел то return 0 и выводим сколько же в итоге получилось бус
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-using namespace std;
-
-signed main() {
-    int n; cin >> n;
-    vector<int> arr(n);
-
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
-    }
-    sort(arr.begin(), arr.end());
-    //string arr_end = (char) arr[arr.size() - 1];
-
-    return 0;
-}
