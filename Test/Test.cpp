@@ -1077,14 +1077,46 @@
 // указатель this указывает на текущий объект
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
 
 using namespace std;
 
-class Apple {
-    
-};
-
 signed main() {
+    int n; cin >> n;
+    vector<int> arr(n); vector<vector<int>> arr_string(n); vector<vector<int>> arr_string_max_size;
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+        int t = arr[i];
+        while (t > 0) {
+            arr_string[i].push_back(t % 10);
+            t /= 10;
+        }
+    }
+    int max = 0;
+    for (int i = 0; i < n; i++) {
+        if (max < arr_string[i].size()) {
+            max = arr_string[i].size();
+        }
+    }
+    int max_size = max;
+    for (int i = 0; i < n; i++) {
+        if (arr_string[i].size() == max_size) {
+            sort(arr_string[i].rbegin(), arr_string[i].rend());
+            arr_string_max_size.push_back(arr_string[i]);
+        }
+    }
+    vector<int> number(arr_string_max_size.size());
+    for (int i = 0; i < arr_string_max_size.size(); ++i) {
+        for (int j = 0; j < arr_string_max_size[i].size(); j++) {
+            number[i] *= 10;
+            number[i] += arr_string_max_size[i][j];
+        }
+    }
+    sort(number.begin(), number.end());
+    cout << number[number.size() - 1];
 
     return 0;
 }
