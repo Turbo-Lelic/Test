@@ -1121,50 +1121,77 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <stack>
+//#include <string>
+
+//using namespace std;
+
+//signed main() {
+//    stack<char> stak;
+//    string input; cin >> input;
+
+//    for (int i = 0; i < input.size(); i++) {
+//        if (input[i] == '(' || input[i] == '[' || input[i] == '{') {
+//            stak.push(input[i]);
+//        } if (input[i] == ')') {
+//            if (stak.size() != 0 && stak.top() == '(') {
+//                stak.pop();
+//            }
+//            else {
+//                cout << "NO";
+//                return 0;
+//            }
+//        } if (input[i] == ']') {
+//            if (stak.size() != 0 && stak.top() == '[') {
+//                stak.pop();
+//            }
+//            else {
+//                cout << "NO";
+//                return 0;
+//            }
+//        } if (input[i] == '}') {
+//            if (stak.size() != 0 && stak.top() == '{') {
+//                stak.pop();
+//            }
+//            else {
+//                cout << "NO";
+//                return 0;
+//            }
+//        }
+//    }
+//    if (stak.size() != 0) {
+//        cout << "NO";
+//    }
+//    else {
+//        cout << "YES";
+//    }
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <stack>
-#include <string>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
 signed main() {
-    stack<char> stak;
-    string input; cin >> input;
+    int sd, human, cnt = 0; cin >> sd >> human;
+    vector<int> sd_human(human);
 
-    for (int i = 0; i < input.size(); i++) {
-        if (input[i] == '(' || input[i] == '[' || input[i] == '{') {
-            stak.push(input[i]);
-        } if (input[i] == ')') {
-            if (stak.size() != 0 && stak.top() == '(') {
-                stak.pop();
-            }
-            else {
-                cout << "NO";
-                return 0;
-            }
-        } if (input[i] == ']') {
-            if (stak.size() != 0 && stak.top() == '[') {
-                stak.pop();
-            }
-            else {
-                cout << "NO";
-                return 0;
-            }
-        } if (input[i] == '}') {
-            if (stak.size() != 0 && stak.top() == '{') {
-                stak.pop();
-            }
-            else {
-                cout << "NO";
-                return 0;
-            }
+    for (int i = 0; i < human; i++) {
+        cin >> sd_human[i];
+    }
+    sort(sd_human.begin(), sd_human.end());
+    for (int i = 0; sd > 0 && i != human; i++) {
+        sd -= sd_human[i];
+        if (sd < 0) {
+            cout << cnt;
+            return 0;
         }
+        cnt++;
     }
-    if (stak.size() != 0) {
-        cout << "NO";
-    }
-    else {
-        cout << "YES";
-    }
+    cout << cnt;
+
     return 0;
 }
