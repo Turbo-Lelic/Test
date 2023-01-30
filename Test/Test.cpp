@@ -1169,29 +1169,39 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+
+//using namespace std;
+
+//signed main() {
+//    int sd, human, cnt = 0; cin >> sd >> human;
+//    vector<int> sd_human(human);
+
+//    for (int i = 0; i < human; i++) {
+//        cin >> sd_human[i];
+//    }
+//    sort(sd_human.begin(), sd_human.end());
+//    for (int i = 0; sd > 0 && i != human; i++) {
+//        sd -= sd_human[i];
+//        if (sd < 0) {
+//            cout << cnt;
+//            return 0;
+//        }
+//        cnt++;
+//    }
+//    cout << cnt;
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <vector>
-#include <algorithm>
 
 using namespace std;
 
 signed main() {
-    int sd, human, cnt = 0; cin >> sd >> human;
-    vector<int> sd_human(human);
-
-    for (int i = 0; i < human; i++) {
-        cin >> sd_human[i];
-    }
-    sort(sd_human.begin(), sd_human.end());
-    for (int i = 0; sd > 0 && i != human; i++) {
-        sd -= sd_human[i];
-        if (sd < 0) {
-            cout << cnt;
-            return 0;
-        }
-        cnt++;
-    }
-    cout << cnt;
-
+    int n;
+    
     return 0;
 }
