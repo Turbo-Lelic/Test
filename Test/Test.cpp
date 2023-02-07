@@ -1196,24 +1196,127 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <locale>
+//#include <string>
+
+//using namespace std;
+
+//class Core {
+//public:
+//    void Start() {
+//        start = 1; cout << "Запуск пк...\n";
+//    }
+//    void End() {
+//        start = 0; cout << "Выключение пк...\n";
+//    }
+//protected:
+//    int start = 0;
+//};
+//class Debian : public Core {
+//public:
+//    int Setting() {
+//        if (start == 1) {
+//            set = 1; cout << "Запускаю настройки...\n";
+//        }
+//        else {
+//            cout << "Настройки завершились с ошибкой...\n";
+//            return 0;
+//        }
+//    }
+//    void SetVolum() {
+//        if (set == 1) {
+//            cout << "Настройте звук: "; cin >> volum;
+//        }
+//        else {
+//            cout << "Настройки не открыты: Попробуйте открыть настройки чтобы изменить звук...\n";
+//        }
+//    }
+//    void SetTime() {
+//        if (set == 1) {
+//            cout << "Настройте время: "; cin >> time;
+//        } else {
+//            cout << "Настройки не открыты: Попробуйте открыть настройки чтобы изменить время...\n";
+//        }
+//    }
+//    void SetMonLight() {
+//        if (set == 1) {
+//            cout << "Настройте свечение монитора: "; cin >> monlight;
+//        } else {
+//            cout << "Настройки не открыты: Попробуйте открыть настройки чтобы изменить свечение монитора...\n";
+//        }
+//    }
+//    void SetTerminal() {
+//        cout << "Вы открыли терминал введите команду: "; cin >> terminal;
+//    }
+//    void GetVolum()  {
+//        cout << "Звук равен: " << volum << endl;
+//    }
+//    void GetTime() {
+//        cout << "Время равно: " << time << endl;
+//    }
+//    void GetMonLight() {
+//        cout << "Свечение монитора равно: " << monlight << endl;
+//    }
+//protected:
+//    int set = 0, volum = 0, time = 0, monlight = 0;
+//    string terminal = "";
+//};
+//class Ubuntu final : public Debian {
+//public:
+//    void SetWallpaper() {
+//        if (set == 1) {
+//            cout << "Измените обои введите путь к png картинке: "; cin >> wallpaper;
+//        }
+//    }
+//    void GetWallpaper() {
+//        cout << "Обои храняться в пути: "; cout << wallpaper << endl;
+//    }
+//private:
+//    string wallpaper = "";
+//};
+
+//signed main() {
+//    setlocale(LC_ALL, "Russian");
+
+//    Core core; core.Start(); core.End();
+//    Debian debian; debian.Start(); debian.Setting(); debian.SetVolum(); debian.SetTime(); debian.SetMonLight(); debian.SetTerminal(); debian.GetVolum(); debian.GetTime(); debian.GetMonLight(); debian.End();
+//    Ubuntu ubuntu; ubuntu.Start(); ubuntu.Setting(); ubuntu.SetWallpaper(); ubuntu.End();
+
+//    return 0;
+//}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <locale>
 
 using namespace std;
 
-signed main() {
-    int n, m, k; cin >> n >> m >> k;
-    vector<int> arr(n);
-
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+class Computer_On {
+public:
+    Computer_On() {
+        cout << "1\n";
     }
-    sort(arr.begin(), arr.end());
-    for (int i = 0; i < m; i++) {
-
+    void pc_on() {
+        cout << "PC ON" << endl;
     }
+};
 
+class Computer_Off {
+public:
+    Computer_Off() {
+        cout << "2\n";
+    }
+    void pc_off() {
+        cout << "PC OFF" << endl;
+    }
+};
+
+class Laptop : public Computer_Off, public Computer_On {}; //?
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+
+    Laptop Laptop_instance;
 
     return 0;
 }
