@@ -1286,37 +1286,56 @@
 //    return 0;
 //}
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#include <iostream>
-#include <locale>
+//#include <iostream>
+//#include <locale>
 
-using namespace std;
+//using namespace std;
 
-class Computer_On {
-public:
-    Computer_On() {
-        cout << "1\n";
-    }
-    void pc_on() {
-        cout << "PC ON" << endl;
-    }
-};
+//class Computer_On {
+//public:
+//    Computer_On() {
+//        cout << "1\n";
+//    }
+//    void pc_on() {
+//        cout << "PC ON" << endl;
+//    }
+//};
 
-class Computer_Off {
-public:
-    Computer_Off() {
-        cout << "2\n";
-    }
-    void pc_off() {
-        cout << "PC OFF" << endl;
-    }
-};
+//class Computer_Off {
+//public:
+//    Computer_Off() {
+//        cout << "2\n";
+//    }
+//    void pc_off() {
+//        cout << "PC OFF" << endl;
+//    }
+//};
 
-class Laptop : public Computer_Off, public Computer_On {}; //?
+//class Laptop : public Computer_Off, public Computer_On {}; //?
 
-int main() {
-    setlocale(LC_ALL, "Russian");
+//int main() {
+//    setlocale(LC_ALL, "Russian");
 
-    Laptop Laptop_instance;
+//    Laptop Laptop_instance;
 
-    return 0;
-}
+//    return 0;
+//}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+
+//using namespace std;
+
+//void func(int arr[]) {
+//    for (int i = 0; i < 5; i++) {
+//        cout << arr[i] << ' ';
+//    }
+//}
+
+//signed main() {
+//    int arr[5] = {1, 2, 3, 4, 5};
+//    func(arr);
+
+//    return 0;
+//}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
