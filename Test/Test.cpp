@@ -1339,13 +1339,54 @@
 //    return 0;
 //}
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//int l = 0, r = N;
+//while (r - l > 1) {
+//    int mid = (l + r) / 2;
+//    if (f(mid) > y) {
+//        r = mid;
+//    }
+//    else { 
+//        l = mid;
+//    }
+//}
+//if (f(l) == y) {
+//    EST
+//}
+//else {
+//    NET
+//}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <Windows.h> //изучить
+#include <algorithm>
 
 using namespace std;
 
-signed main() {
+bool f(int x, int n, int x_cek, int y_cek) {
+    if (x < min(x_cek, y_cek)) {
+        if (n > 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
+    return (1 + (x - min(x_cek, y_cek)) / x_cek + (x - min(x_cek, y_cek)) / y_cek) >= n;
+}
+
+signed main() {
+    int n, x_cek, y_cek, cnt = 0; cin >> n >> x_cek >> y_cek;
+    int l = 0, r = max(x_cek, y_cek) * n;
+
+    while (r - l > 1) {
+        int mid = (l + r) / 2;
+
+        if (f(mid, n, x_cek, y_cek)) {
+            r = mid;
+        } else {
+            l = mid;
+        }
+    }
+    cout << r;
 
     return 0;
 }
