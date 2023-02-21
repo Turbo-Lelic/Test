@@ -1076,50 +1076,50 @@
 //}
 // указатель this указывает на текущий объект
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <string>
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//#include <string>
 
-using namespace std;
+//using namespace std;
 
-signed main() {
-    int n; cin >> n;
-    vector<int> arr(n); vector<vector<int>> arr_string(n); vector<vector<int>> arr_string_max_size;
+//signed main() {
+//    int n; cin >> n;
+//    vector<int> arr(n); vector<vector<int>> arr_string(n); vector<vector<int>> arr_string_max_size;
 
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
-        int t = arr[i];
-        while (t > 0) {
-            arr_string[i].push_back(t % 10);
-            t /= 10;
-        }
-    }
-    int max = 0;
-    for (int i = 0; i < n; i++) {
-        if (max < arr_string[i].size()) {
-            max = arr_string[i].size();
-        }
-    }
-    int max_size = max;
-    for (int i = 0; i < n; i++) {
-        if (arr_string[i].size() == max_size) {
-            sort(arr_string[i].rbegin(), arr_string[i].rend());
-            arr_string_max_size.push_back(arr_string[i]);
-        }
-    }
-    vector<int> number(arr_string_max_size.size());
-    for (int i = 0; i < arr_string_max_size.size(); ++i) {
-        for (int j = 0; j < arr_string_max_size[i].size(); j++) {
-            number[i] *= 10;
-            number[i] += arr_string_max_size[i][j];
-        }
-    }
-    sort(number.begin(), number.end());
-    cout << number[number.size() - 1];
+//    for (int i = 0; i < n; i++) {
+//        cin >> arr[i];
+//        int t = arr[i];
+//        while (t > 0) {
+//            arr_string[i].push_back(t % 10);
+//            t /= 10;
+//        }
+//    }
+//    int max = 0;
+//    for (int i = 0; i < n; i++) {
+//        if (max < arr_string[i].size()) {
+//            max = arr_string[i].size();
+//        }
+//    }
+//    int max_size = max;
+//    for (int i = 0; i < n; i++) {
+//        if (arr_string[i].size() == max_size) {
+//            sort(arr_string[i].rbegin(), arr_string[i].rend());
+//            arr_string_max_size.push_back(arr_string[i]);
+//        }
+//    }
+//    vector<int> number(arr_string_max_size.size());
+//    for (int i = 0; i < arr_string_max_size.size(); ++i) {
+//        for (int j = 0; j < arr_string_max_size[i].size(); j++) {
+//            number[i] *= 10;
+//            number[i] += arr_string_max_size[i][j];
+//        }
+//    }
+//    sort(number.begin(), number.end());
+//    cout << number[number.size() - 1];
 
-    return 0;
-}
+//    return 0;
+//}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //#include <iostream>
 //#include <stack>
@@ -1390,3 +1390,48 @@ signed main() {
 
 //    return 0;
 //}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//недоделал
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+signed main() {
+    int n, m, cnt = 0; cin >> n >> m;
+    vector<vector<int>> arr_n_m(n, vector<int>(m));
+    vector<int> arr_x(n);
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> arr_n_m[i][j]; 
+
+            if (j + 1 == m) {
+                cin >> arr_x[i];
+            }
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cnt += (arr_n_m[i][j] ^ arr_x[i]);
+        }
+    }
+    cout << cnt;
+
+    return 0;
+}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//как узнать количество бит в переменной
+//bitset<сколько битов надо создать>(переменная);
+//#include <iostream>
+//#include <bitset>
+
+//using namespace std;
+
+//signed main() {
+//    int n = 6;
+//    cout << bitset<10>(n);
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
