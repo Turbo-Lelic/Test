@@ -1391,32 +1391,27 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//недоделал
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
 signed main() {
-    int n, m, cnt = 0; cin >> n >> m;
-    vector<vector<int>> arr_n_m(n, vector<int>(m));
-    vector<int> arr_x(n);
+    int n, m; cin >> n >> m;
+    vector<int> arr(n, 0);
 
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cin >> arr_n_m[i][j]; 
+    for (int i = 0; i < m; i++) {
+        int l, r, x; cin >> l >> r >> x;
 
-            if (j + 1 == m) {
-                cin >> arr_x[i];
-            }
+        for (int j = l - 1; j < r; j++) {
+            arr[j] += x;
         }
     }
+    int ans = 0;
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cnt += (arr_n_m[i][j] ^ arr_x[i]);
-        }
+        ans ^= arr[i];
     }
-    cout << cnt;
+    cout << ans;
 
     return 0;
 }
