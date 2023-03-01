@@ -1391,30 +1391,30 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#include <iostream>
-#include <vector>
+//#include <iostream>
+//#include <vector>
 
-using namespace std;
+//using namespace std;
 
-signed main() {
-    int n, m; cin >> n >> m;
-    vector<int> arr(n, 0);
+//signed main() {
+//    int n, m; cin >> n >> m;
+//    vector<int> arr(n, 0);
 
-    for (int i = 0; i < m; i++) {
-        int l, r, x; cin >> l >> r >> x;
+//    for (int i = 0; i < m; i++) {
+//        int l, r, x; cin >> l >> r >> x;
 
-        for (int j = l - 1; j < r; j++) {
-            arr[j] += x;
-        }
-    }
-    int ans = 0;
-    for (int i = 0; i < n; i++) {
-        ans ^= arr[i];
-    }
-    cout << ans;
+//        for (int j = l - 1; j < r; j++) {
+//            arr[j] += x;
+//        }
+//    }
+//    int ans = 0;
+//    for (int i = 0; i < n; i++) {
+//        ans ^= arr[i];
+//    }
+//    cout << ans;
 
-    return 0;
-}
+//   return 0;
+//}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //как узнать количество бит в переменной
 //bitset<сколько битов надо создать>(переменная);
@@ -1430,3 +1430,37 @@ signed main() {
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+signed main() {
+    int n, m; cin >> n >> m;
+    vector<int> arr(n, 0);
+
+    for (int i = 0; i < m; i++) {
+        int l, r, x; cin >> l >> r >> x;
+        if () {
+            arr[l] = r;
+        }
+        else {
+
+        }
+    }
+    vector<int> arr_res(n, 0);
+    for (int i = 0; i < m; i++) {
+        if (i == 0) {
+            arr_res[i] = arr[i];
+        }
+
+    }
+
+    int ans = 0;
+    for (int i = 0; i < n; i++) {
+        ans ^= arr_res[i];
+    }
+    cout << ans;
+
+    return 0;
+}
