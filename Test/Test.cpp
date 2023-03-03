@@ -1430,37 +1430,65 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+
+//using namespace std;
+
+//signed main() {
+//    int n, m; cin >> n >> m;
+//    vector<int> arr(n, 0);
+
+//    for (int i = 0; i < m; i++) {
+//        int l, r, x; cin >> l >> r >> x;
+
+//        arr[l] = x; arr[r] += x * (-1);
+//        cout << arr[l] << ' ' << arr[r] << endl;
+//    }
+//    vector<int> arr_res(n, 0);
+//    for (int i = 0; i < m; i++) {
+//        arr_res[i] += (arr[i]);
+//    }
+
+//    int ans = 0;
+//    for (int i = 0; i < n; i++) {
+//        ans ^= arr_res[i];
+//    }
+//    cout << ans;
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <math.h>
+
+//using namespace std;
+
+//signed main() {
+//    double n, m, a; cin >> n >> m >> a;
+//    cout << (long long)ceil(n / a) * (long long)ceil(m / a);
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
+#include <string>
 #include <vector>
 
 using namespace std;
 
 signed main() {
-    int n, m; cin >> n >> m;
-    vector<int> arr(n, 0);
+    string str; cin >> str;
+    vector<char> arr = {'A', 'O', 'Y', 'E', 'U', 'I', 'a', 'o', 'y', 'e', 'u', 'i'};
 
-    for (int i = 0; i < m; i++) {
-        int l, r, x; cin >> l >> r >> x;
-        if () {
-            arr[l] = r;
-        }
-        else {
-
+    for (int i = 0; i < str.length(); i++) {
+        for (int j = 0; j < str.length() + 1; j++) {
+            if (str[i] == arr[j]) {
+                // удалить символ
+            }
         }
     }
-    vector<int> arr_res(n, 0);
-    for (int i = 0; i < m; i++) {
-        if (i == 0) {
-            arr_res[i] = arr[i];
-        }
-
-    }
-
-    int ans = 0;
-    for (int i = 0; i < n; i++) {
-        ans ^= arr_res[i];
-    }
-    cout << ans;
+    cout << str;
 
     return 0;
 }
