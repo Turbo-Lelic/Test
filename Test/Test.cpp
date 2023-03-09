@@ -1471,24 +1471,120 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+
+//using namespace std;
+
+//signed main(void) {
+//    __int8 p__int8[4] = {'A', 'B', 'C'};
+//    int pint[4] = {'A', 'B', 'C'};
+//    __int64 p__int64[4] = {'A', 'B', 'C'};
+//    float pfloat[4] = {'A', 'B', 'C'};
+//    double pdouble[4] = {'A', 'B', 'C'};
+//    short int pshort[4] = {'A', 'B', 'C'};
+//    char pchar[4] = {'A', 'B', 'C'};
+
+//    for (int i = 0; i < 3; i++) {
+//        cout << "p__int8" << '[' << i << "] - " << p__int8[i] << endl;
+//    }
+//    cout << endl;
+//    for (int i = 0; i < 3; i++) {
+//        cout << "pint" << '[' << i << "] - " << pint[i] << endl;
+//    }
+//    cout << endl;
+//    for (int i = 0; i < 3; i++) {
+//        cout << "p__int64" << '[' << i << "] - " << p__int64[i] << endl;
+//    }
+//    cout << endl;
+//    for (int i = 0; i < 3; i++) {
+//        cout << "pfloat" << '[' << i << "] - " << pfloat[i] << endl;
+//    }
+//    cout << endl;
+//    for (int i = 0; i < 3; i++) {
+//        cout << "pdouble" << '[' << i << "] - " << pdouble[i] << endl;
+//    }
+//    cout << endl;
+//    for (int i = 0; i < 3; i++) {
+//        cout << "pshort" << '[' << i << "] - " << pshort[i] << endl;
+//    }
+//    cout << endl;
+//    for (int i = 0; i < 3; i++) {
+//        cout << "pchar" << '[' << i << "] - " << pchar[i] << endl;
+//    }
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <string>
+
+//using namespace std;
+
+//string str;
+
+//signed main(void) {
+//    cin >> str;
+//    int cnt = 0, max = 0;
+//    bool flag = 0;
+    
+//    for (int i = 0; i < str.size(); i++) {
+//        if (i == 0) {
+//            flag = str[i] - '0';
+//        }
+//        if (str[i] - '0' == flag) {
+//            cnt++;
+//            flag = str[i] - '0';
+//        }
+//        if (cnt > max) {
+//            max = cnt;
+//        }
+//        if (str[i] - '0' != flag) {
+//            cnt = 0;
+//            flag = str[i] - '0';
+//        }
+//    }
+//    if (max + 1 >= 7) {
+//        cout << "YES";
+//    } else {
+//        cout << "NO";
+//    }
+    
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+
+//using namespace std;
+
+//signed main(void) {
+//    int n; cin >> n;
+//   if (n == 2) {
+//        cout << 2;
+//    } else {
+//        cout << 1;
+//    }
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
-signed main() {
-    string str; cin >> str;
-    vector<char> arr = {'A', 'O', 'Y', 'E', 'U', 'I', 'a', 'o', 'y', 'e', 'u', 'i'};
+signed main(void) {
+    int n, m; cin >> n >> m;
+    vector<int> arr(m);
 
-    for (int i = 0; i < str.length(); i++) {
-        for (int j = 0; j < str.length() + 1; j++) {
-            if (str[i] == arr[j]) {
-                // удалить символ
-            }
-        }
+    for (int i = 0; i < m; i++) {
+        cin >> arr[i];
     }
-    cout << str;
+    sort(arr.begin(), arr.end());
+
+
+
+
 
     return 0;
 }
