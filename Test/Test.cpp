@@ -1568,10 +1568,52 @@
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
 
 using namespace std;
 
-signed main(void) {
+signed main() {
+    string line;
+    getline(cin, line);
+    vector<int> arr;
+
+    for (int i = 0; i < line.size(); ) {
+        if (line[i] - '0' >= 0) {
+            arr[i] *= 10;
+            arr[i] += line[i] - '0';
+        }
+        if (line[i] == ' ') { i++; }
+    }
+    int x = 0, x_i = 0;
+    for (int i = 0; i < arr.size(); i++) {
+        if (arr[i] == i) {
+            x = arr[i], x_i = i;
+        }
+    }
+    int y = 0, y_i = 0;
+    reverse(arr.begin(), arr.end());
+    for (int i = 0; i < arr.size(); i++) {
+        if (arr[i] == i) {
+            y = arr[i], y_i = i;
+        }
+    }
+
+    cout << x << endl;
+    reverse(arr.begin(), arr.end());
+    for (int i = 0; i < arr.size(); i++) {
+        if (arr[i] != x_i) {
+            cout << arr[i] << ' ';
+        }
+    }
+    cout << endl << y << endl;
+    reverse(arr.begin(), arr.end());
+    for (int i = 0; i < arr.size(); i++) {
+        if (arr[i] != y_i) {
+            cout << arr[i] << ' ';
+        }
+    }
 
     return 0;
 }
