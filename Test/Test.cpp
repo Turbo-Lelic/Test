@@ -1618,41 +1618,83 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//#include <string>
+//#include <cstdlib>
+
+//using namespace std;
+
+//signed main() {
+//    string line;
+//    vector<int> arr; vector<string> arr_string;
+
+//    while (cin >> line) {
+//        arr_string.push_back(line);
+//    }
+//    for (int i = 0; i < arr_string.size(); i++) {
+//        arr.push_back(stoi(arr_string[i]));
+//    }
+
+//    int x = 0, x_i = 0, y = 0, y_i = 0;
+//    for (int i = 0; i < arr.size() - 1; i++) {
+//       if (arr[i] == i && arr[i + 1] == arr.size() - arr[i] - 2) {
+//            x = arr[i];
+//            y = arr[i + 1];
+//        }
+//    }
+
+//    cout << x << endl;
+//    for (int i = 0; i < x; i++) {
+//        cout << arr[i] << ' ';
+//    }
+//    cout << endl << y << endl;
+//    for (int i = x + 2; i < arr.size(); i++) {
+//        cout << arr[i] << ' ';
+//    }
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <string>
-#include <cstdlib>
+#include <sstream>
 
 using namespace std;
 
 signed main() {
-    string line;
-    vector<int> arr; vector<string> arr_string;
-
-    while (cin >> line) {
-        arr_string.push_back(line);
-    }
-    for (int i = 0; i < arr_string.size(); i++) {
-        arr.push_back(stoi(arr_string[i]));
+    string s;
+    getline(cin, s);
+    vector<int> arr(s.size());
+    for (int i = 0; i < s.size(); i++) {
+        arr[i] = s[i] - '0';
     }
 
-    int x = 0, x_i = 0, y = 0, y_i = 0;
-    for (int i = 0; i < arr.size() - 1; i++) {
-        if (arr[i] == i && arr[i + 1] == arr.size() - arr[i] - 2) {
-            x = arr[i];
-            y = arr[i + 1];
+    int x;
+    stringstream from_stream(s);
+    vector<int> carts;
+    while (from_stream >> x) {
+        carts.push_back(x);
+    }
+
+    vector<vector<int>> arr_res(arr.size(), vector<int>(carts.size()));
+    for (int i = 0; i < carts.size() + 1; i++) {
+        for (int j = 0; j < arr.size(); j++) {
+            if (j != carts[i]) {
+                arr_res[i][j] = arr[j];
+            } else {
+                break;
+            }
         }
     }
 
-    cout << x << endl;
-    for (int i = 0; i < x; i++) {
-        cout << arr[i] << ' ';
+    for (int i = 0; i < carts.size() + 1; i++) {
+        for (int j = 0; j < arr.size(); j++) {
+            cout << arr_res[i][j] << ' ';
+        }
     }
-    cout << endl << y << endl;
-    for (int i = x + 2; i < arr.size(); i++) {
-        cout << arr[i] << ' ';
-    }
-
     return 0;
 }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
