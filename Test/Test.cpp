@@ -1672,14 +1672,14 @@ signed main() {
         arr[i] = s[i] - '0';
     }
 
-    int x;
-    stringstream from_stream(s);
-    vector<int> carts;
-    while (from_stream >> x) {
-        carts.push_back(x);
+    string x;
+    getline(cin, x);
+    vector<int> carts(x.size());
+    for (int i = 0; i < x.size(); i++) {
+        carts[i] = x[i] - '0';
     }
 
-    vector<vector<int>> arr_res(arr.size(), vector<int>(carts.size()));
+    vector<vector<int>> arr_res(arr.size(), vector<int>(carts.size() + 1));
     for (int i = 0; i < carts.size() + 1; i++) {
         for (int j = 0; j < arr.size(); j++) {
             if (j != carts[i]) {
@@ -1689,6 +1689,7 @@ signed main() {
             }
         }
     }
+    reverse(arr_res.begin(), arr_res.end());
 
     for (int i = 0; i < carts.size() + 1; i++) {
         for (int j = 0; j < arr.size(); j++) {
