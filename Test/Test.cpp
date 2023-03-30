@@ -1667,32 +1667,38 @@ using namespace std;
 signed main() {
     string s;
     getline(cin, s);
-    vector<int> arr(s.size());
-    for (int i = 0; i < s.size(); i++) {
-        arr[i] = s[i] - '0';
+    stringstream mycin(s);
+    vector<int> arr;
+    int x;
+    while (mycin >> x) {
+        arr.push_back(x);
     }
 
-    string x;
-    getline(cin, x);
-    vector<int> carts(x.size());
-    for (int i = 0; i < x.size(); i++) {
-        carts[i] = x[i] - '0';
+    string ss;
+    getline(cin, ss);
+    stringstream mycin2(ss);
+    vector<int> carts;
+    int y;
+    while (mycin2 >> y) {
+        carts.push_back(y);
     }
+    carts.push_back(arr.size());
 
-    vector<vector<int>> arr_res(arr.size(), vector<int>(carts.size() + 1));
-    for (int i = 0; i < carts.size() + 1; i++) {
-        for (int j = 0; j < arr.size(); j++) {
-            if (j != carts[i]) {
-                arr_res[i][j] = arr[j];
-            } else {
-                break;
-            }
+    vector<vector<int>> arr_res(carts.size(), vector<int>());
+    for (int i = 0, j = 0; i < carts.size(); i++) {
+        while (j < carts[i]) {
+            arr_res[i].push_back(arr[j]);
+            j++;
         }
     }
+
+    // [i]
+    // .at(i)
+
     reverse(arr_res.begin(), arr_res.end());
 
-    for (int i = 0; i < carts.size() + 1; i++) {
-        for (int j = 0; j < arr.size(); j++) {
+    for (int i = 0; i < carts.size(); i++) {
+        for (int j = 0; j < arr_res[i].size(); j++) {
             cout << arr_res[i][j] << ' ';
         }
     }
