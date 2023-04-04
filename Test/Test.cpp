@@ -1668,8 +1668,8 @@ signed main() {
     string s;
     getline(cin, s);
     stringstream mycin(s);
-    vector<int> arr;
-    int x;
+    vector<long long> arr;
+    long long x;
     while (mycin >> x) {
         arr.push_back(x);
     }
@@ -1684,17 +1684,13 @@ signed main() {
     }
     carts.push_back(arr.size());
 
-    vector<vector<int>> arr_res(carts.size(), vector<int>());
+    vector<vector<long long>> arr_res(carts.size(), vector<long long>());
     for (int i = 0, j = 0; i < carts.size(); i++) {
         while (j < carts[i]) {
             arr_res[i].push_back(arr[j]);
             j++;
         }
     }
-
-    // [i]
-    // .at(i)
-
     reverse(arr_res.begin(), arr_res.end());
 
     for (int i = 0; i < carts.size(); i++) {
