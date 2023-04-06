@@ -1657,47 +1657,117 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//#include <sstream>
+
+//using namespace std;
+
+//signed main() {
+//    string s;
+//    getline(cin, s);
+//    stringstream mycin(s);
+//    vector<long long> arr;
+//    long long x;
+//    while (mycin >> x) {
+//        arr.push_back(x);
+//    }
+
+//    string ss;
+//    getline(cin, ss);
+//    stringstream mycin2(ss);
+//    vector<int> carts;
+//    int y;
+//    while (mycin2 >> y) {
+//        carts.push_back(y);
+//    }
+//    carts.push_back(arr.size());
+
+//    vector<vector<long long>> arr_res(carts.size(), vector<long long>());
+//    for (int i = 0, j = 0; i < carts.size(); i++) {
+//        while (j < carts[i]) {
+//            arr_res[i].push_back(arr[j]);
+//            j++;
+//        }
+//    }
+//    reverse(arr_res.begin(), arr_res.end());
+
+//    for (int i = 0; i < carts.size(); i++) {
+//        for (int j = 0; j < arr_res[i].size(); j++) {
+//            cout << arr_res[i][j] << ' ';
+//        }
+//    }
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+
+//using namespace std;
+
+//signed main() {
+//    int k; cin >> k;
+//    vector<int> arr;
+
+//    int buff = 0; // a = 3  k = 12
+//    for (int i = 2; i <= k; i++) { // a -- k % a == 0 -> k % (k / a) == 0  --- k = a * (k / a)
+//        if (i > 2) {
+//            if (k % i == 0) {
+//                for (int l = 0; l < arr.size(); l++) {
+//                    if (i % arr[l] == 0) {
+//                        buff++;
+//                    }
+//                }
+//                if (buff >= 1) {
+//                    buff = 0;
+//                }
+//                else {
+//                    arr.push_back(i);
+//                }
+//            }
+//        }
+//        if (i == 2) {
+//            if (k % i == 0) {
+//                arr.push_back(i);
+//            }
+//        }
+//    }
+
+//    cout << arr.size() << endl;
+//    for (int i = 0; i < arr.size(); i++) {
+//        cout << arr[i] << ' ';
+//    }
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// x = t ^ 2, sqrt(x) = t
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <sstream>
 
 using namespace std;
 
 signed main() {
-    string s;
-    getline(cin, s);
-    stringstream mycin(s);
-    vector<long long> arr;
-    long long x;
-    while (mycin >> x) {
-        arr.push_back(x);
-    }
+    int k; cin >> k;
+    vector<pair<int, int> > p; // массив пар  {p_i, al_i}
 
-    string ss;
-    getline(cin, ss);
-    stringstream mycin2(ss);
-    vector<int> carts;
-    int y;
-    while (mycin2 >> y) {
-        carts.push_back(y);
-    }
-    carts.push_back(arr.size());
-
-    vector<vector<long long>> arr_res(carts.size(), vector<long long>());
-    for (int i = 0, j = 0; i < carts.size(); i++) {
-        while (j < carts[i]) {
-            arr_res[i].push_back(arr[j]);
-            j++;
+    for (int i = 2; i * i <= k; i++) { // i < sqrt(k) => i ^ 2 < k
+        if (k % i != 0)
+            continue;
+        int al_i = 0;
+        while (k % i == 0) {
+            k /= i;
+            al_i++;
         }
+        p.push_back({ i, al_i });
     }
-    reverse(arr_res.begin(), arr_res.end());
+    if (k != 1) {
+        p.push_back({ k, 1 });
+    }
 
-    for (int i = 0; i < carts.size(); i++) {
-        for (int j = 0; j < arr_res[i].size(); j++) {
-            cout << arr_res[i][j] << ' ';
-        }
+    cout << p.size() << endl;
+    for (int i = 0; i < p.size(); i++) {
+        cout << p[i].first << ' ';
     }
     return 0;
 }
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
