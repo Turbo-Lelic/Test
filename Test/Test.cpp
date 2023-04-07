@@ -1742,32 +1742,107 @@
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // x = t ^ 2, sqrt(x) = t
+//#include <iostream>
+//#include <vector>
+
+//using namespace std;
+
+//signed main() {
+//    int k; cin >> k;
+//    vector<pair<int, int> > p; // массив пар  {p_i, al_i}
+
+//    for (int i = 2; i * i <= k; i++) { // i < sqrt(k) => i ^ 2 < k
+//        if (k % i != 0)
+//            continue;
+//        int al_i = 0;
+//        while (k % i == 0) {
+//            k /= i;
+//            al_i++;
+//        }
+//        p.push_back({ i, al_i });
+//    }
+//    if (k != 1) {
+//        p.push_back({ k, 1 });
+//    }
+
+//    cout << p.size() << endl;
+//    for (int i = 0; i < p.size(); i++) {
+//        cout << p[i].first << ' ';
+//    }
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+
+//using namespace std;
+//template <typename T>
+
+//void remove(vector<T>&arr, size_t index) {
+//    arr.erase(arr.begin() + index);
+//}
+
+//signed main() {
+//    int n = 0; cin >> n;
+//    bool buff = 0;
+//    vector<int> arr = {2, 3, 5, 7, 9, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+
+//    for (int i = 0; i < arr.size(); i++) {
+//        if (n == arr[i]) {
+//            remove(arr, i);
+//            break;
+//        }
+//    }
+
+//    for (int i = 0; i < arr.size(); i++) {
+//        if (n % arr[i] == 0) {
+//            buff = true;
+//        }
+//    }
+
+//    if (buff == false) {
+//        cout << "YES";
+//    } else {
+//        cout << "NO";
+//    }
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+
+//using namespace std;
+
+//signed main() {
+//    int n = 0, buff = 0; cin >> n;
+//    vector<int> arr = {2, 3, 5, 7, 9};
+    
+//    for (int i = 0; i < arr.size(); i++) {
+//        if (arr[i] == n) {
+//            arr.erase(arr.begin() + i);
+//            break;
+//        }
+//    }
+
+//    for (int i = 0; i < arr.size(); i++) {
+//        if (n % arr[i] == 0) {
+//            cout << "NO"; return 0;
+//        }
+//    }
+//    cout << "YES";
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
 signed main() {
-    int k; cin >> k;
-    vector<pair<int, int> > p; // массив пар  {p_i, al_i}
 
-    for (int i = 2; i * i <= k; i++) { // i < sqrt(k) => i ^ 2 < k
-        if (k % i != 0)
-            continue;
-        int al_i = 0;
-        while (k % i == 0) {
-            k /= i;
-            al_i++;
-        }
-        p.push_back({ i, al_i });
-    }
-    if (k != 1) {
-        p.push_back({ k, 1 });
-    }
 
-    cout << p.size() << endl;
-    for (int i = 0; i < p.size(); i++) {
-        cout << p[i].first << ' ';
-    }
     return 0;
 }
