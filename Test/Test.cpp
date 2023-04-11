@@ -1810,39 +1810,25 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//#include <iostream>
-//#include <vector>
-//#include <algorithm>
-
-//using namespace std;
-
-//signed main() {
-//    int n = 0, buff = 0; cin >> n;
-//    vector<int> arr = {2, 3, 5, 7, 9};
-    
-//    for (int i = 0; i < arr.size(); i++) {
-//        if (arr[i] == n) {
-//            arr.erase(arr.begin() + i);
-//            break;
-//        }
-//    }
-
-//    for (int i = 0; i < arr.size(); i++) {
-//        if (n % arr[i] == 0) {
-//            cout << "NO"; return 0;
-//        }
-//    }
-//    cout << "YES";
-
-//    return 0;
-//}
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <math.h>
 
 using namespace std;
 
 signed main() {
+    long long n = 0; cin >> n;
+    long long stop = sqrt(n);
 
+    for (long long i = 2; i <= stop; i++) {
+        if (n % i == 0) {
+            cout << "NO";
+            return 0;
+        }
+
+    }
+    cout << "YES";
 
     return 0;
 }
