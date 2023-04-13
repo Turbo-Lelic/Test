@@ -1810,25 +1810,38 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//#include <math.h>
+
+//using namespace std;
+
+//signed main() {
+//    long long n = 0; cin >> n;
+//    long long stop = sqrt(n);
+
+//    for (long long i = 2; i <= stop; i++) {
+//        if (n % i == 0) {
+//            cout << "NO";
+//            return 0;
+//        }
+
+//    }
+//    cout << "YES";
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <vector>
-#include <algorithm>
 #include <math.h>
 
 using namespace std;
 
 signed main() {
-    long long n = 0; cin >> n;
-    long long stop = sqrt(n);
-
-    for (long long i = 2; i <= stop; i++) {
-        if (n % i == 0) {
-            cout << "NO";
-            return 0;
-        }
-
-    }
-    cout << "YES";
+    int a, b; cin >> a >> b;
+    int q = floor((float)a / (float)b); int r = a - q * b;
+    cout << q << " " << r;
 
     return 0;
 }
