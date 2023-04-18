@@ -1833,15 +1833,79 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <math.h>
+
+//using namespace std;
+
+//signed main() {
+//    int a, b; cin >> a >> b;
+//    int q = floor((float)a / (float)b); int r = a - q * b;
+//    cout << q << " " << r;
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+
+//using namespace std;
+
+//unsigned gcd(unsigned a, unsigned b) {
+//    if (b == 0)
+//        return a;
+//    if (a > b)
+//        return gcd(b, a % b);
+//    else
+//        return gcd(a, b % a);
+//}
+
+//signed main() {
+//    unsigned a, b;
+//    cin >> a >> b;
+//    cout << gcd(a, b);
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+
+//using namespace std;
+
+//signed main() {
+//    int n; cin >> n;
+//    vector<int> arr(n);
+
+//    for (int i = 0; i < n; i++) {
+//        cin >> arr[i];
+//    }
+//    sort(arr.begin(), arr.end());
+//    cout << arr[0] << ' ' << arr[1];
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <math.h>
+#include <string>
+#include <vector>
 
 using namespace std;
 
 signed main() {
-    int a, b; cin >> a >> b;
-    int q = floor((float)a / (float)b); int r = a - q * b;
-    cout << q << " " << r;
+    string str; cin >> str;
+    vector<int> arr;
+    vector<pair<char, int>> arr_pair(str.size());
+
+    for (int i = 0; i < str.size(); i++) {
+        for (int j = 0; j < str.size(); j++) {
+            if (arr[i] != str[j]) {
+                arr[i] = str[j];
+                break;
+            }
+        }
+    }
+    //str = aabc
+    //arr = a, b, c
 
     return 0;
 }
