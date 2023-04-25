@@ -1,341 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //#include <iostream>
 //#include <ctime>
@@ -1888,54 +1550,96 @@
 // str - A B C D E
 // count1 - 2 3 5 4 2
 // count2 - 2 2 4 4 2
+//#include <iostream>
+//#include <string>
+//#include <vector>
+//#include <algorithm>
+
+//using namespace std;
+
+//int count1[91], count2[91];
+//vector<char> vec;
+
+//void func1() {
+//    for (int i = 0; i < 91; i++) {
+//        if (count1[i] >= 1 && count1[i] % 2 == 1) {
+//            count2[i]--;
+//        }
+//    }
+//}
+//void func2() { // ABCCDDE?
+//    for (int i = 0; i < 91; i++) {
+//        if (count2[i] >= 2) {
+//            for (int j = 0; j < count2[i] / 2; j++) {
+//                vec.push_back(i);
+//                cout << (char)i;
+//            }
+//        }
+//    }
+//}
+//void func3() {// ABCCDDEB
+//    for (int i = 0; i < 91; i++) {
+//        if (count1[i] >= 1 && count1[i] % 2 == 1) {
+//            cout << (char)i;
+//           break;
+//        }
+//    }
+//}
+
+//signed main() {
+//    string str; cin >> str;
+
+//    for (int i = 0; i < str.size(); i++) {
+//        count1[(int)str[i]] += 1, count2[(int)str[i]] += 1;
+//    }
+
+//    func1(); func2(); func3();
+//    reverse(vec.begin(), vec.end());
+
+//    for (int i = 0; i < vec.size(); i++) {
+//        cout << vec[i];
+//    }
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//1
+//#include <iostream>
+
+//signed main() {
+//    int n; std::cin >> n;
+
+//    if (n <= 3) {
+//        std::cout << -1;
+//    }
+//    else {
+//        std::cout << (1 + (n - 2) / 5);
+//    }
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <string>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
-int count1[91], count2[91];
-vector<char> vec;
-
-void func1() {
-    for (int i = 0; i < 91; i++) {
-        if (count1[i] >= 1 && count1[i] % 2 == 1) {
-            count2[i]--;
-        }
-    }
-}
-void func2() { // ABCCDDE?
-    for (int i = 0; i < 91; i++) {
-        if (count2[i] >= 2) {
-            for (int j = 0; j < count2[i] / 2; j++) {
-                vec.push_back(i);
-                cout << (char)i;
-            }
-        }
-    }
-}
-void func3() {// ABCCDDEB
-    for (int i = 0; i < 91; i++) {
-        if (count1[i] >= 1 && count1[i] % 2 == 1) {
-            cout << (char)i;
-            break;
-        }
-    }
-}
-
 signed main() {
-    string str; cin >> str;
+    int n; cin >> n;
+    vector<int> queue;
+    int head = 0;
 
-    for (int i = 0; i < str.size(); i++) {
-        count1[(int)str[i]] += 1, count2[(int)str[i]] += 1;
-    }
+    for (int i = 0; i < n; i++) {
+        char chr; cin >> chr;
 
-    func1(); func2(); func3();
-    reverse(vec.begin(), vec.end());
-
-    for (int i = 0; i < vec.size(); i++) {
-        cout << vec[i];
+        if (chr == '+') {
+            int it; cin >> it;
+            queue.push_back(it);
+        }
+        if (chr == '-') {
+            cout << queue[head] << endl;
+            head++;
+        }
     }
 
     return 0;
