@@ -1619,28 +1619,72 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+
+//using namespace std;
+
+//signed main() {
+//    int n; cin >> n;
+//    vector<int> queue;
+//    int head = 0;
+
+//    for (int i = 0; i < n; i++) {
+//        char chr; cin >> chr;
+
+//        if (chr == '+') {
+//            int it; cin >> it;
+//            queue.push_back(it);
+//        }
+//        if (chr == '-') {
+//            cout << queue[head] << endl;
+//            head++;
+//        }
+//    }
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Доделать - Минимум на стеке
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+
+//using namespace std;
+
+//signed main() {
+//    int n; cin >> n;
+//    vector<long long> arr;
+
+//    int in1 = 0;
+//    long long in2 = 0;
+//    for (int i = 0; i < n; i++) {
+//        cin >> in1;
+//        if (in1 == 1) {
+//            cin >> in2;
+//            arr.push_back(in2);
+//        } else if (in1 == 2) {
+//            arr.pop_back();
+//        } else if (in1 == 3) {
+//            long long min = arr[0];
+//            for (int j = 0; j < arr.size(); j++) {
+//                if (min > arr[j]) {
+//                    min = arr[j];
+//                }
+//            }
+//            cout << min << endl;
+//        }
+//    }
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
 signed main() {
-    int n; cin >> n;
-    vector<int> queue;
-    int head = 0;
-
-    for (int i = 0; i < n; i++) {
-        char chr; cin >> chr;
-
-        if (chr == '+') {
-            int it; cin >> it;
-            queue.push_back(it);
-        }
-        if (chr == '-') {
-            cout << queue[head] << endl;
-            head++;
-        }
-    }
+    int n = 0;
 
     return 0;
 }
