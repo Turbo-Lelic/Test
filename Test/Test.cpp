@@ -1645,39 +1645,48 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Доделать - Минимум на стеке
-//#include <iostream>
-//#include <vector>
-//#include <algorithm>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-//using namespace std;
+using namespace std;
 
-//signed main() {
-//    int n; cin >> n;
-//    vector<long long> arr;
+signed main() {
+    int n; cin >> n;
+    vector<int> arr;
+    vector<int> arr_min;
 
-//    int in1 = 0;
-//    long long in2 = 0;
-//    for (int i = 0; i < n; i++) {
-//        cin >> in1;
-//        if (in1 == 1) {
-//            cin >> in2;
-//            arr.push_back(in2);
-//        } else if (in1 == 2) {
-//            arr.pop_back();
-//        } else if (in1 == 3) {
-//            long long min = arr[0];
-//            for (int j = 0; j < arr.size(); j++) {
-//                if (min > arr[j]) {
-//                    min = arr[j];
-//                }
-//            }
-//            cout << min << endl;
-//        }
-//    }
+    int in1 = 0;
+    int in2 = 0;
+    for (int i = 0; i < n; i++) {
+        cin >> in1;
+        if (in1 == 1) {
+            cin >> in2;
+            arr.push_back(in2);
+            if (arr_min.size() == 0) {
+                arr_min.push_back(in2);
+            }
+            else {
+                if (arr_min.back() > arr.back()) {
+                    arr_min.push_back(arr.back());
+                }
+                else {
+                    arr_min.push_back(arr_min[arr_min.size() - 1]);
+                }
+            }
+        }
+        else if (in1 == 2) {
+            arr.pop_back();
+            arr_min.pop_back();
 
-//    return 0;
-//}
+        }
+        else if (in1 == 3) {
+            cout << arr_min[arr_min.size() - 1] << endl;
+        }
+    }
+
+    return 0;
+}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
 
