@@ -1547,9 +1547,9 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// str - A B C D E
-// count1 - 2 3 5 4 2
-// count2 - 2 2 4 4 2
+//str - A B C D E
+//count1 - 2 3 5 4 2
+//count2 - 2 2 4 4 2
 //#include <iostream>
 //#include <string>
 //#include <vector>
@@ -1645,55 +1645,55 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#include <iostream>
-#include <vector>
-#include <algorithm>
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
 
-using namespace std;
+//using namespace std;
 
-signed main() {
-    int n; cin >> n;
-    vector<int> arr;
-    vector<int> arr_min;
+//signed main() {
+//    int n; cin >> n;
+//    vector<int> arr;
+//    vector<int> arr_min;
 
-    int in1 = 0;
-    int in2 = 0;
-    for (int i = 0; i < n; i++) {
-        cin >> in1;
-        if (in1 == 1) {
-            cin >> in2;
-            arr.push_back(in2);
-            if (arr_min.size() == 0) {
-                arr_min.push_back(in2);
-            }
-            else {
-                if (arr_min.back() > arr.back()) {
-                    arr_min.push_back(arr.back());
-                }
-                else {
-                    arr_min.push_back(arr_min[arr_min.size() - 1]);
-                }
-            }
-        }
-        else if (in1 == 2) {
-            arr.pop_back();
-            arr_min.pop_back();
+//    int in1 = 0;
+//    int in2 = 0;
+//    for (int i = 0; i < n; i++) {
+//        cin >> in1;
+//        if (in1 == 1) {
+//            cin >> in2;
+//            arr.push_back(in2);
+//            if (arr_min.size() == 0) {
+//                arr_min.push_back(in2);
+//            }
+//            else {
+//                if (arr_min.back() > arr.back()) {
+//                    arr_min.push_back(arr.back());
+//                }
+//                else {
+//                    arr_min.push_back(arr_min[arr_min.size() - 1]);
+//                }
+//            }
+//        }
+//        else if (in1 == 2) {
+//            arr.pop_back();
+//            arr_min.pop_back();
 
-        }
-        else if (in1 == 3) {
-            cout << arr_min[arr_min.size() - 1] << endl;
-        }
-    }
+//        }
+//        else if (in1 == 3) {
+//            cout << arr_min[arr_min.size() - 1] << endl;
+//        }
+//    }
 
-    return 0;
-}
+//    return 0;
+//}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
 
 using namespace std;
 
 signed main() {
-    int n = 0;
+    
 
     return 0;
 }
