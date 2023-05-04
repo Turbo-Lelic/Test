@@ -1688,12 +1688,58 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//10
+//1 3 5 7 9
+//2 4 6 8 0
 #include <iostream>
+#include <deque>
 
 using namespace std;
 
-signed main() {
-    
+int n = 0;
 
+void func(int cinn) {
+    if (cinn == 0) {
+        cinn = n;
+    }
+}
+
+signed main() {
+    cin >> n;
+    deque<int> arr1, arr2;
+
+    for (int i = 0; i < n / 2; i++) {
+        int cinn; cin >> cinn;
+        func(cinn);
+        arr1.push_back(cinn);
+    }
+    for (int i = 0; i < n / 2; i++) {
+        int cinn; cin >> cinn;
+        func(cinn); 
+        arr2.push_back(cinn);
+    }
+
+    long long cnt = 0;
+    while (arr1.size() != 0 || arr2.size() != 0) {
+        if (arr1.begin() > arr2.begin()) {
+            arr1.push_back(arr1.front()); arr1.push_back(arr2.front());
+            arr1.pop_front(); arr2.pop_front();
+        } else if (arr2.begin() > arr1.begin()) {
+            arr2.push_back(arr1.front()); arr2.push_back(arr2.front());
+            arr2.pop_front(); arr1.pop_front();
+        }  
+        cnt++;
+        if (cnt == 200000) {
+            cout << "draw";
+            return 0;
+        }
+    }
+    
+    if (arr1.size() == 0) {
+        cout << "second " << cnt;
+    } else {
+        cout << "first " << cnt;
+    }
     return 0;
 }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
