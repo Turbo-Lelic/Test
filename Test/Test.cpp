@@ -1688,58 +1688,87 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//10
-//1 3 5 7 9
-//2 4 6 8 0
+//#include <iostream>
+//#include <deque>
+
+//using namespace std;
+
+//int n = 0;
+
+//signed main() {
+//    cin >> n;
+//    deque<int> arr1, arr2;
+
+//    for (int i = 0; i < n / 2; i++) {
+//        int cinn; cin >> cinn;
+//        arr1.push_back(cinn);
+//    }
+//    for (int i = 0; i < n / 2; i++) {
+//        int cinn; cin >> cinn;
+//        arr2.push_back(cinn);
+//    }
+//    long long cnt = 0;
+//    while (arr1.size() > 0 && arr2.size() > 0) {
+//        if (arr1.front() == 0 && arr2.front() == 9) {
+//            arr1.push_back(arr1.front()); arr1.push_back(arr2.front());
+//            arr1.pop_front(); arr2.pop_front();
+//        }
+//        else if (arr2.front() == 0 && arr1.front() == 9) {
+//            arr2.push_back(arr1.front()); arr2.push_back(arr2.front());
+//            arr2.pop_front(); arr1.pop_front();
+//        }
+//        cnt++;
+//        if (cnt == 200000) {
+//            cout << "draw";
+//            return 0;
+//        }
+//    }
+
+//    if (arr1.size() == 0) {
+//        cout << "second " << cnt;
+//    }
+//    else {
+//        cout << "first " << cnt;
+//    }
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Codeforces Round 861 (Div. 2) - B. Игра в казино
+//Надо сделать что при n = 0 сразу вывести 0 и исправить бесконечный цикл
+
 #include <iostream>
-#include <deque>
+#include <vector>
+#include <math.h>
 
 using namespace std;
 
-int n = 0;
-
-void func(int cinn) {
-    if (cinn == 0) {
-        cinn = n;
-    }
-}
-
 signed main() {
-    cin >> n;
-    deque<int> arr1, arr2;
+    int t; cin >> t; //Сколько тестов
+    vector<int> res(t); //Вектор с ответом
+    
+    for (int i = 0; i < t; i++) {
+        int n, m; cin >> n >> m; //n, m
+        vector<vector<int>> arr(n, vector<int> (m)); //Вектор карт с числами
 
-    for (int i = 0; i < n / 2; i++) {
-        int cinn; cin >> cinn;
-        func(cinn);
-        arr1.push_back(cinn);
-    }
-    for (int i = 0; i < n / 2; i++) {
-        int cinn; cin >> cinn;
-        func(cinn); 
-        arr2.push_back(cinn);
-    }
-
-    long long cnt = 0;
-    while (arr1.size() != 0 || arr2.size() != 0) {
-        if (arr1.begin() > arr2.begin()) {
-            arr1.push_back(arr1.front()); arr1.push_back(arr2.front());
-            arr1.pop_front(); arr2.pop_front();
-        } else if (arr2.begin() > arr1.begin()) {
-            arr2.push_back(arr1.front()); arr2.push_back(arr2.front());
-            arr2.pop_front(); arr1.pop_front();
-        }  
-        cnt++;
-        if (cnt == 200000) {
-            cout << "draw";
-            return 0;
+        for (int cin1 = 0; cin1 < n; cin1++) { //Считываю
+            for (int cin2 = 0; cin2 < m; cin2++) {
+                cin >> arr[cin1][cin2];
+            }
+        }
+        for (int x1 = 0; x1 < n; ) { //Алгоритм
+            int cnt = 0;
+            for (int x2 = 0; x2 < m; x2++) {
+                res[i] += abs(arr[x1][x2] - arr[x1 + 1][x2]); //|a1 − b1| + |a2 − b2|+ ... +|am − bm|
+                if (x1 < t - 2) { //Вот тут еще хрень
+                    x1++;
+                } else { cnt++; break; } //Входит в б.с цикл
+            }
+            if (cnt >= 1) { break; }
         }
     }
-    
-    if (arr1.size() == 0) {
-        cout << "second " << cnt;
-    } else {
-        cout << "first " << cnt;
+    for (int i = 0; i < t; i++) { //Ответ
+        cout << res[i] << endl;
     }
+
     return 0;
 }
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
