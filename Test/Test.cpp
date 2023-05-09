@@ -1689,36 +1689,54 @@
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //#include <iostream>
-//#include <deque>
+//#include <queue>
 
 //using namespace std;
 
 //int n = 0;
+//const int STOP = 200000;
+
+//bool win(int card1, int card2) { // возвращает true, если card1 побеждает card2, false иначе
+//    // cout << "compare card1=" << card1 << ", card2=" << card2 << endl;
+//    if ((card1 > card2 || card1 == 0 && card2 == n - 1) && !(card1 == n - 1 && card2 == 0)) {
+//        return true;
+//    }
+//    else {
+//        return false;
+//    }
+//}
 
 //signed main() {
 //    cin >> n;
-//    deque<int> arr1, arr2;
+//    queue<int> arr1, arr2;
 
 //    for (int i = 0; i < n / 2; i++) {
 //        int cinn; cin >> cinn;
-//        arr1.push_back(cinn);
+//        arr1.push(cinn);
 //    }
 //    for (int i = 0; i < n / 2; i++) {
 //        int cinn; cin >> cinn;
-//        arr2.push_back(cinn);
+//        arr2.push(cinn);
 //    }
-//    long long cnt = 0;
-//    while (arr1.size() > 0 && arr2.size() > 0) {
-//        if (arr1.front() == 0 && arr2.front() == 9) {
-//            arr1.push_back(arr1.front()); arr1.push_back(arr2.front());
-//            arr1.pop_front(); arr2.pop_front();
+
+//    int cnt = 0;
+//    while (arr1.size() != 0 && arr2.size() != 0) {
+//        // cout << "step=" << cnt << endl;
+//        if (win(arr1.front(), arr2.front())) {
+//            arr1.push(arr1.front());
+//            arr1.push(arr2.front());
+//            arr1.pop();
+//            arr2.pop();
 //        }
-//        else if (arr2.front() == 0 && arr1.front() == 9) {
-//            arr2.push_back(arr1.front()); arr2.push_back(arr2.front());
-//            arr2.pop_front(); arr1.pop_front();
+//        else {
+//            arr2.push(arr1.front());
+//            arr2.push(arr2.front());
+//            arr2.pop();
+//            arr1.pop();
 //        }
+
 //        cnt++;
-//        if (cnt == 200000) {
+//        if (cnt == STOP) {
 //            cout << "draw";
 //            return 0;
 //        }
