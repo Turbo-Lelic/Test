@@ -1754,39 +1754,70 @@
 //Codeforces Round 861 (Div. 2) - B. Игра в казино
 //Надо сделать что при n = 0 сразу вывести 0 и исправить бесконечный цикл
 
+//#include <iostream>
+//#include <vector>
+//#include <math.h>
+
+//using namespace std;
+
+//signed main() {
+//    int t; cin >> t; //Сколько тестов
+//    vector<int> res(t); //Вектор с ответом
+    
+//    for (int i = 0; i < t; i++) {
+//        int n, m; cin >> n >> m; //n, m
+//        vector<vector<int>> arr(n, vector<int> (m)); //Вектор карт с числами
+
+//        for (int cin1 = 0; cin1 < n; cin1++) { //Считываю
+//            for (int cin2 = 0; cin2 < m; cin2++) {
+//                cin >> arr[cin1][cin2];
+//            }
+//        }
+//        for (int x1 = 0; x1 < n; ) { //Алгоритм
+//            int cnt = 0;
+//            for (int x2 = 0; x2 < m; x2++) {
+//                res[i] += abs(arr[x1][x2] - arr[x1 + 1][x2]); //|a1 − b1| + |a2 − b2|+ ... +|am − bm|
+//                if (x1 < t - 2) { //Вот тут еще хрень
+//                    x1++;
+//                } else { cnt++; break; } //Входит в б.с цикл
+//            }
+//            if (cnt >= 1) { break; }
+//        }
+//    }
+//    for (int i = 0; i < t; i++) { //Ответ
+//        cout << res[i] << endl;
+//    }
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
 #include <vector>
-#include <math.h>
+#include <algorithm>
+#include <cmath>
 
 using namespace std;
 
 signed main() {
-    int t; cin >> t; //Сколько тестов
-    vector<int> res(t); //Вектор с ответом
-    
-    for (int i = 0; i < t; i++) {
-        int n, m; cin >> n >> m; //n, m
-        vector<vector<int>> arr(n, vector<int> (m)); //Вектор карт с числами
+    int n, m, s; cin >> n >> m >> s;
+    vector<int> arr(n), arr_res(n);
 
-        for (int cin1 = 0; cin1 < n; cin1++) { //Считываю
-            for (int cin2 = 0; cin2 < m; cin2++) {
-                cin >> arr[cin1][cin2];
-            }
-        }
-        for (int x1 = 0; x1 < n; ) { //Алгоритм
-            int cnt = 0;
-            for (int x2 = 0; x2 < m; x2++) {
-                res[i] += abs(arr[x1][x2] - arr[x1 + 1][x2]); //|a1 − b1| + |a2 − b2|+ ... +|am − bm|
-                if (x1 < t - 2) { //Вот тут еще хрень
-                    x1++;
-                } else { cnt++; break; } //Входит в б.с цикл
-            }
-            if (cnt >= 1) { break; }
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    sort(arr.begin(), arr.end());
+    for (int i = 0; i < n; i++) {
+        if (s > arr[i]) {
+            arr_res[i] = 0;
+        } else {
+            arr_res[i] = floor(m / arr[i]);
+            int test = floor(arr[i] / *arr_res.end());
+            arr_res[i] = *arr_res.end() * test;
         }
     }
-    for (int i = 0; i < t; i++) { //Ответ
-        cout << res[i] << endl;
-    }
+    sort(arr_res.begin(), arr_res.end());
+    cout << *arr_res.end();
+
 
     return 0;
 }
