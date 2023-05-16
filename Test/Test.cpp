@@ -1791,33 +1791,180 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//#include <cmath>
+
+//using namespace std;
+
+//signed main() {
+//    int n, m, s; cin >> n >> m >> s;
+//    vector<int> arr(n), arr_res(n);
+
+//    for (int i = 0; i < n; i++) {
+//        cin >> arr[i];
+//    }
+//    sort(arr.begin(), arr.end());
+//    for (int i = 0; i < n; i++) {
+//        if (s > arr[i]) {
+//            arr_res[i] = 0;
+//        }
+//        else {
+//            int add_cnt = arr[i] / s;
+//            int offer_cnt = m / arr[i];
+//            arr_res[i] = add_cnt * offer_cnt;
+//        }
+//    }
+//    sort(arr_res.begin(), arr_res.end());
+//    cout << arr_res.back();
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Cлияние массивов
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+
+//using namespace std;
+
+//signed main() {
+//    int n_a, n_b; cin >> n_a >> n_b;
+//    vector<int> arr_a(n_a), arr_b(n_b), arr_c;    
+
+//    for (int i = 0; i < n_a; i++) {
+//        cin >> arr_a[i];
+//    }
+//    for (int i = 0; i < n_b; i++) {
+//        cin >> arr_b[i];
+//    }
+//    sort(arr_a.begin(), arr_a.end()); sort(arr_b.begin(), arr_b.end());
+
+//    int ptr_i = 0, ptr_j = 0;
+//    while (ptr_i < n_a || ptr_j < n_b) {
+//        if (ptr_j == arr_b.size() || ptr_i < arr_a.size() && arr_a[ptr_i] < arr_b[ptr_j]) {
+//            arr_c.push_back(arr_a[ptr_i]);
+//            ptr_i++;
+//        }
+//        else {
+//            arr_c.push_back(arr_b[ptr_j]);
+//            ptr_j++;
+//        }
+//    }
+
+
+//    for (int i = 0; i < arr_c.size(); i++) {
+//        cout << arr_c[i] << ' ';
+//    }
+   
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Число меньших
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+
+//using namespace std;
+
+//signed main() {
+//    int n_a, n_b; cin >> n_a >> n_b;
+//    vector<int> arr_a(n_a), arr_b(n_b);
+
+//    for (int i = 0; i < n_a; i++) {
+//        cin >> arr_a[i];
+//    }
+//    for (int i = 0; i < n_b; i++) {
+//        cin >> arr_b[i];
+//    }
+//    sort(arr_a.begin(), arr_a.end()); sort(arr_b.begin(), arr_b.end());
+
+//    vector<int> arr_res;
+//    int ptr_i = 0, ptr_j = 0;
+//    while (ptr_i < n_a || ptr_j < n_b) {
+//        if (ptr_j == arr_b.size() || ptr_i < arr_a.size() && arr_a[ptr_i] < arr_b[ptr_j]) {
+//           ptr_i++;
+//        }
+//        else {
+//            arr_res.push_back(ptr_i);
+//            ptr_j++;
+//        }
+//    }
+
+//    for (int i = 0; i < arr_res.size(); i++) {
+//        cout << arr_res[i] << ' ';
+//    }
+
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Число пар равных
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//
+//using namespace std;
+//
+//signed main() {
+//    int a, b; cin >> a >> b;
+//    vector<int> arr_a(a), arr_b(b);
+//    
+//    for (int i = 0; i < a; i++) {
+//        cin >> arr_a[i];
+//    }
+//    for (int i = 0; i < b; i++) {
+//        cin >> arr_b[i];
+//    }
+//
+//    int ptr_a = 0, ptr_b = 0, cnt = 0;
+//    while (ptr_a < a || ptr_b < b) {
+//        if (arr_b[ptr_b] == arr_a[ptr_a]) {
+//            ptr_a++, cnt++;
+//        } else if (arr_b[ptr_b] != arr_a[ptr_a]) {
+//            ptr_b++;
+//        }
+//    }
+//    cout << cnt;
+//
+//    return 0;
+//}
+// //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Дюбели и сверла
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <cmath>
+#include <math.h>
 
 using namespace std;
 
 signed main() {
-    int n, m, s; cin >> n >> m >> s;
-    vector<int> arr(n), arr_res(n);
+    int a, b; cin >> a >> b;
+    vector<int> arr_a(a), arr_b(b), arr_res(b);
 
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+    for (int i = 0; i < a; i++) {
+        cin >> arr_a[i];
     }
-    sort(arr.begin(), arr.end());
-    for (int i = 0; i < n; i++) {
-        if (s > arr[i]) {
-            arr_res[i] = 0;
+    for (int i = 0; i < b; i++) {
+        cin >> arr_b[i];
+    }
+    sort(arr_a.begin(), arr_a.end()); sort(arr_b.begin(), arr_b.end());
+
+    int ptr_a = 0, ptr_b = 0, ans = 2147483647;
+    while (ptr_a < a || ptr_b < b) {
+        if (abs(arr_b[ptr_b] - arr_a[ptr_a] < ans)) {
+            ans = abs(arr_b[ptr_b] - arr_a[ptr_a]);
+            arr_res[ptr_b] = ans;
+            ptr_a++;
+            cerr << "ptr_a = " << ptr_a << ' ';
         } else {
-            arr_res[i] = floor(m / arr[i]);
-            int test = floor(arr[i] / *arr_res.end());
-            arr_res[i] = *arr_res.end() * test;
+            ptr_b++;
+            cerr << "ptr_b = " << ptr_b << ' ';
         }
     }
     sort(arr_res.begin(), arr_res.end());
-    cout << *arr_res.end();
-
+    cout << arr_res[0];
 
     return 0;
 }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
