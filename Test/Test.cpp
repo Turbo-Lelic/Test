@@ -1931,40 +1931,72 @@
 //}
 // //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Дюбели и сверла
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//#include <math.h>
+//
+//using namespace std;
+//
+//signed main() {
+//    int a, b; cin >> a >> b;
+//    vector<int> arr_a(a), arr_b(b);
+//
+//    for (int i = 0; i < a; i++) {
+//        cin >> arr_a[i];
+//    }
+//    for (int i = 0; i < b; i++) {
+//        cin >> arr_b[i];
+//    }
+//    sort(arr_a.begin(), arr_a.end()); sort(arr_b.begin(), arr_b.end());
+//
+//    int ptr_a = 0, ptr_b = 0, ans = 2147483647;
+//    while (ptr_a < a && ptr_b < b) {
+//        if (abs(arr_b[ptr_b] - arr_a[ptr_a]) < ans) {
+//            ans = abs(arr_b[ptr_b] - arr_a[ptr_a]);
+//        }
+//        if (arr_b[ptr_b] > arr_a[ptr_a]) {
+//            ptr_a++;
+//        }
+//        else {
+//            ptr_b++;
+//        }
+//    }
+//    cout << ans;
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <math.h>
+#include <string>
 
 using namespace std;
 
 signed main() {
-    int a, b; cin >> a >> b;
-    vector<int> arr_a(a), arr_b(b), arr_res(b);
+    int n, delit = 2; cin >> n;
+    vector<string> arr;
+    cout << '[';
 
-    for (int i = 0; i < a; i++) {
-        cin >> arr_a[i];
+    while (delit * delit <= n) {
+        while (n % delit == 0) {
+            arr.push_back(delit);
+            n = n / delit;
+        }
+        delit++;
     }
-    for (int i = 0; i < b; i++) {
-        cin >> arr_b[i];
+    if (n != 1) {
+        arr.push_back(n);
     }
-    sort(arr_a.begin(), arr_a.end()); sort(arr_b.begin(), arr_b.end());
-
-    int ptr_a = 0, ptr_b = 0, ans = 2147483647;
-    while (ptr_a < a || ptr_b < b) {
-        if (abs(arr_b[ptr_b] - arr_a[ptr_a] < ans)) {
-            ans = abs(arr_b[ptr_b] - arr_a[ptr_a]);
-            arr_res[ptr_b] = ans;
-            ptr_a++;
-            cerr << "ptr_a = " << ptr_a << ' ';
-        } else {
-            ptr_b++;
-            cerr << "ptr_b = " << ptr_b << ' ';
+    for (int i = 0; i < arr.size(); i++) {
+        if (i != arr.size() - 1) {
+            cout << arr[i] << ", ";
+        }
+        else {
+            cout << arr[i];
         }
     }
-    sort(arr_res.begin(), arr_res.end());
-    cout << arr_res[0];
+    cout << ']';
 
     return 0;
 }
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
