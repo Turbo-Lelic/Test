@@ -1751,46 +1751,6 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Codeforces Round 861 (Div. 2) - B. Игра в казино
-//Надо сделать что при n = 0 сразу вывести 0 и исправить бесконечный цикл
-
-//#include <iostream>
-//#include <vector>
-//#include <math.h>
-
-//using namespace std;
-
-//signed main() {
-//    int t; cin >> t; //Сколько тестов
-//    vector<int> res(t); //Вектор с ответом
-    
-//    for (int i = 0; i < t; i++) {
-//        int n, m; cin >> n >> m; //n, m
-//        vector<vector<int>> arr(n, vector<int> (m)); //Вектор карт с числами
-
-//        for (int cin1 = 0; cin1 < n; cin1++) { //Считываю
-//            for (int cin2 = 0; cin2 < m; cin2++) {
-//                cin >> arr[cin1][cin2];
-//            }
-//        }
-//        for (int x1 = 0; x1 < n; ) { //Алгоритм
-//            int cnt = 0;
-//            for (int x2 = 0; x2 < m; x2++) {
-//                res[i] += abs(arr[x1][x2] - arr[x1 + 1][x2]); //|a1 − b1| + |a2 − b2|+ ... +|am − bm|
-//                if (x1 < t - 2) { //Вот тут еще хрень
-//                    x1++;
-//                } else { cnt++; break; } //Входит в б.с цикл
-//            }
-//            if (cnt >= 1) { break; }
-//        }
-//    }
-//    for (int i = 0; i < t; i++) { //Ответ
-//        cout << res[i] << endl;
-//    }
-
-//    return 0;
-//}
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //#include <iostream>
 //#include <vector>
 //#include <algorithm>
@@ -1967,36 +1927,105 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <string>
+//
+//using namespace std;
+//
+//signed main() {
+//    int n, delit = 2; cin >> n;
+//    vector<string> arr;
+//    cout << '[';
+//
+//    while (delit * delit <= n) {
+//        while (n % delit == 0) {
+//            arr.push_back(delit);
+//            n = n / delit;
+//        }
+//        delit++;
+//    }
+//    if (n != 1) {
+//        arr.push_back(n);
+//    }
+//    for (int i = 0; i < arr.size(); i++) {
+//        if (i != arr.size() - 1) {
+//            cout << arr[i] << ", ";
+//        }
+//        else {
+//            cout << arr[i];
+//        }
+//    }
+//    cout << ']';
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//
+//using namespace std;
+//
+//signed main() {
+//    int tests; cin >> tests;
+//
+//    for (int i = 0; i < tests; i++) {
+//        int n, cinn = 0; cin >> n;
+//        vector<int> arr0, arr1;
+//        for (int j = 0; j < n; j++) {
+//            cin >> cinn;
+//            if (cinn % 2 == 0) {
+//                arr0.push_back(0);
+//            } else {
+//                arr1.push_back(1);
+//            }
+//        }
+//        if (arr0.size() == 0 && arr1.size() > 0 || arr0.size() > 0 && arr1.size() == 0) {
+//            cout << "YES\n";
+//        } else {
+//            cout << "NO\n";
+//        }
+//    }
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Игра в казино
+//Надо сделать что при n = 0 сразу вывести 0 и исправить бесконечный цикл
+
 #include <iostream>
 #include <vector>
-#include <string>
+#include <math.h>
 
 using namespace std;
 
 signed main() {
-    int n, delit = 2; cin >> n;
-    vector<string> arr;
-    cout << '[';
+    int t; cin >> t; //Сколько тестов
+    vector<int> res(t); //Вектор с ответом
 
-    while (delit * delit <= n) {
-        while (n % delit == 0) {
-            arr.push_back(delit);
-            n = n / delit;
+    for (int i = 0; i < t; i++) {
+        int n, m; cin >> n >> m; //n, m
+        vector<vector<int>> arr(n, vector<int> (m)); //Вектор карт с числами
+
+        for (int cin1 = 0; cin1 < n; cin1++) { //Считываю
+            for (int cin2 = 0; cin2 < m; cin2++) {
+                cin >> arr[cin1][cin2];
+            }
         }
-        delit++;
-    }
-    if (n != 1) {
-        arr.push_back(n);
-    }
-    for (int i = 0; i < arr.size(); i++) {
-        if (i != arr.size() - 1) {
-            cout << arr[i] << ", ";
-        }
-        else {
-            cout << arr[i];
+        for (int x1 = 0; x1 < n; ) { //Алгоритм
+            int cnt = 0;
+            for (int x2 = 0; x2 < m; x2++) {
+                res[i] += abs(arr[x1][x2] - arr[x1 + 1][x2]); //|a1 − b1| + |a2 − b2|+ ... +|am − bm|
+                if (x1 < t - 2) { //Вот тут еще хрень
+                    x1++;
+                } else { cnt++; break; } //Входит в б.с цикл
+            }
+            if (cnt >= 1) { break; }
         }
     }
-    cout << ']';
+    for (int i = 0; i < t; i++) { //Ответ
+        cout << res[i] << endl;
+    }
 
     return 0;
 }
