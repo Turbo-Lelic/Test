@@ -1993,39 +1993,213 @@
 //Игра в казино
 //Надо сделать что при n = 0 сразу вывести 0 и исправить бесконечный цикл
 
-#include <iostream>
-#include <vector>
-#include <math.h>
-
-using namespace std;
-
-signed main() {
-    int t; cin >> t; //Сколько тестов
-    vector<int> res(t); //Вектор с ответом
-
-    for (int i = 0; i < t; i++) {
-        int n, m; cin >> n >> m; //n, m
-        vector<vector<int>> arr(n, vector<int> (m)); //Вектор карт с числами
-
-        for (int cin1 = 0; cin1 < n; cin1++) { //Считываю
-            for (int cin2 = 0; cin2 < m; cin2++) {
-                cin >> arr[cin1][cin2];
-            }
-        }
-        for (int x1 = 0; x1 < n; ) { //Алгоритм
-            int cnt = 0;
-            for (int x2 = 0; x2 < m; x2++) {
-                res[i] += abs(arr[x1][x2] - arr[x1 + 1][x2]); //|a1 − b1| + |a2 − b2|+ ... +|am − bm|
-                if (x1 < t - 2) { //Вот тут еще хрень
-                    x1++;
-                } else { cnt++; break; } //Входит в б.с цикл
-            }
-            if (cnt >= 1) { break; }
-        }
-    }
-    for (int i = 0; i < t; i++) { //Ответ
-        cout << res[i] << endl;
-    }
-
-    return 0;
-}
+//#include <iostream>
+//#include <vector>
+//#include <math.h>
+//
+//using namespace std;
+//
+//signed main() {
+//    int t; cin >> t; //Сколько тестов
+//    vector<int> res(t); //Вектор с ответом
+//
+//    for (int i = 0; i < t; i++) {
+//        int n, m; cin >> n >> m; //n, m
+//        vector<vector<int>> arr(n, vector<int> (m)); //Вектор карт с числами
+//
+//        for (int cin1 = 0; cin1 < n; cin1++) { //Считываю
+//            for (int cin2 = 0; cin2 < m; cin2++) {
+//                cin >> arr[cin1][cin2];
+//            }
+//        }
+//        for (int x1 = 0; x1 < n; ) { //Алгоритм
+//            int cnt = 0;
+//            for (int x2 = 0; x2 < m; x2++) {
+//                res[i] += abs(arr[x1][x2] - arr[x1 + 1][x2]); //|a1 − b1| + |a2 − b2|+ ... +|am − bm|
+//                if (x1 < t - 2) { //Вот тут еще хрень
+//                    x1++;
+//                } else { cnt++; break; } //Входит в б.с цикл
+//            }
+//            if (cnt >= 1) { break; }
+//        }
+//    }
+//    for (int i = 0; i < t; i++) { //Ответ
+//        cout << res[i] << endl;
+//    }
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <string>
+//
+//using namespace std;
+//
+//signed main() {
+//    int n; cin >> n;
+//    string codeforsec = "codeforces";
+//    vector<string> arr(n);
+//
+//    for (int i = 0; i < n; i++) {
+//        cin >> arr[i];
+//    }
+//    for (int i = 0; i < n; i++) {
+//        int cnt = 0;
+//        for (int j = 0; j < 10; j++) {
+//            if (arr[i][j] != codeforsec[j]) {
+//                cnt++;
+//            }
+//        }
+//        cout << cnt << endl;
+//    }
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//
+//using namespace std;
+//
+//signed main() {
+//    int n; cin >> n;
+//
+//    while (n--) {
+//        int size_arr, max = 0, min = 0; cin >> size_arr;
+//        vector<int> arr(size_arr);
+//
+//        for (int i = 0; i < size_arr; i++) {
+//            cin >> arr[i];
+//
+//            if (arr[i] == 0) {
+//                min++;
+//            } else if (arr[i] == 1) {
+//                if (min > max) {
+//                    max = min;
+//                }
+//                min = 0;
+//            }
+//        }
+//        if (min > max) {
+//            max = min;
+//        }
+//        cout << max << endl;
+//    }
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//
+//using namespace std;
+//
+//int tests, n, m;
+//
+//int func(int n, int m) {
+//    if (n == m) {
+//        return 1;
+//    } else if (n % 3 != 0 || m > n) {
+//        return 0;
+//    } else {
+//        return func(n / 3, m) + func(2 * (n / 3), m);
+//    }
+//}
+//
+//signed main() {
+//	cin >> tests;
+//
+//    for (int i = 0; i < tests; i++) {
+//        cin >> n >> m;
+//        if (func(n, m)) {
+//            cout << "YES\n";
+//        }
+//        else {
+//            cout << "NO\n";
+//        }
+//    }
+//
+//	return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <string>
+//#include <algorithm>
+//
+//using namespace std;
+//
+//struct stru {
+//    int a, b, d, i;
+//};
+//
+//signed main() {
+//    int n, rost, a = 0, b = 0; cin >> n >> rost;
+//    vector<stru> arr_pls, arr_min;
+//    vector<int> res;
+//
+//    for (int i = 1; i < n + 1; ++i) {
+//        cin >> a >> b;
+//
+//        if (b - a > 0) {
+//            arr_pls.push_back({ a, b, b - a, i });
+//        } else {
+//            arr_min.push_back({ a, b, b - a, i });
+//        }
+//    }
+//    sort(arr_pls.begin(), arr_pls.end(), [](const stru &fi, const stru &se) { return fi.a < se.a; });
+//    sort(arr_min.begin(), arr_min.end(), [](const stru &fi, const stru &se) { return fi.b > se.b; });
+//
+//    for (stru s: arr_pls) {
+//        if (rost - s.a > 0) {
+//            rost -= s.a; rost += s.b;
+//            res.push_back(s.i);
+//        } else {
+//            cout << -1;
+//            return 0;
+//        }
+//    }
+//    for (stru s: arr_min) {
+//        if (rost - s.a > 0) {
+//            rost -= s.a; rost += s.b;
+//            res.push_back(s.i);
+//        } else {
+//            cout << -1;
+//            return 0;
+//        }
+//    }
+//
+//    for (auto i: res) {
+//        cout << i << ' ';
+//    }
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <string>
+//
+//using namespace std;
+//
+//signed main() {
+//    int n, res = 0; cin >> n;
+//
+//    while (n--) {
+//        string str; cin >> str;
+//
+//        if (str == "Tetrahedron") {
+//            res += 4;
+//        } else if (str == "Cube") {
+//            res += 6;
+//        } else if (str == "Octahedron") {
+//            res += 8;
+//        } else if (str == "Dodecahedron") {
+//            res += 12;
+//        } else if (str == "Icosahedron") {
+//            res += 20;
+//        }
+//    }
+//    cout << res;
+//
+//    return 0;
+//}
