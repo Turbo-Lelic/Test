@@ -2203,3 +2203,41 @@
 //
 //    return 0;
 //}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+signed main() {
+    int n, m; cin >> n >> m;
+    vector<pair<int, int>> arr(m);
+    vector<int> res;
+
+    for (int i = 0; i < m; i++) {
+        cin >> arr[i].first;
+        arr[i].second = i + 1;
+    }
+    sort(arr.begin(), arr.end());
+    reverse(arr.begin(), arr.end());
+
+    for (int i = 0; i < m; i++) {
+        if (n - arr[i].first > 0) {
+            n -= arr[i].first;
+            res.push_back(arr[i].second);
+        }
+        else {
+            res.push_back(arr[i].second);
+
+            cout << res.size() << endl;
+            for (int j = 0; j < res.size(); j++) {
+                cout << res[j] << ' ';
+            }
+            return 0;
+        }
+    }
+    cout << -1;
+
+    return 0;
+}
