@@ -1990,46 +1990,6 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Игра в казино
-//Надо сделать что при n = 0 сразу вывести 0 и исправить бесконечный цикл
-
-//#include <iostream>
-//#include <vector>
-//#include <math.h>
-//
-//using namespace std;
-//
-//signed main() {
-//    int t; cin >> t; //Сколько тестов
-//    vector<int> res(t); //Вектор с ответом
-//
-//    for (int i = 0; i < t; i++) {
-//        int n, m; cin >> n >> m; //n, m
-//        vector<vector<int>> arr(n, vector<int> (m)); //Вектор карт с числами
-//
-//        for (int cin1 = 0; cin1 < n; cin1++) { //Считываю
-//            for (int cin2 = 0; cin2 < m; cin2++) {
-//                cin >> arr[cin1][cin2];
-//            }
-//        }
-//        for (int x1 = 0; x1 < n; ) { //Алгоритм
-//            int cnt = 0;
-//            for (int x2 = 0; x2 < m; x2++) {
-//                res[i] += abs(arr[x1][x2] - arr[x1 + 1][x2]); //|a1 − b1| + |a2 − b2|+ ... +|am − bm|
-//                if (x1 < t - 2) { //Вот тут еще хрень
-//                    x1++;
-//                } else { cnt++; break; } //Входит в б.с цикл
-//            }
-//            if (cnt >= 1) { break; }
-//        }
-//    }
-//    for (int i = 0; i < t; i++) { //Ответ
-//        cout << res[i] << endl;
-//    }
-//
-//    return 0;
-//}
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //#include <iostream>
 //#include <vector>
 //#include <string>
@@ -2204,40 +2164,145 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//
+//using namespace std;
+//
+//signed main() {
+//    int n, m; cin >> n >> m;
+//    vector<pair<int, int>> arr(m);
+//    vector<int> res;
+//
+//    for (int i = 0; i < m; i++) {
+//        cin >> arr[i].first;
+//        arr[i].second = i + 1;
+//    }
+//    sort(arr.begin(), arr.end());
+//    reverse(arr.begin(), arr.end());
+//
+//    for (int i = 0; i < m; i++) {
+//        if (n - arr[i].first > 0) {
+//            n -= arr[i].first;
+//            res.push_back(arr[i].second);
+//        }
+//        else {
+//            res.push_back(arr[i].second);
+//
+//            cout << res.size() << endl;
+//            for (int j = 0; j < res.size(); j++) {
+//                cout << res[j] << ' ';
+//            }
+//            return 0;
+//        }
+//    }
+//    cout << -1;
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Игра в казино
+//Надо сделать что при n = 0 сразу вывести 0 и исправить бесконечный цикл
+
+//#include <iostream>
+//#include <vector>
+//#include <math.h>
+//
+//using namespace std;
+//
+//signed main() {
+//    int t; cin >> t; //Сколько тестов
+//    vector<int> res(t); //Вектор с ответом
+//
+//    for (int i = 0; i < t; i++) {
+//        int n, m; cin >> n >> m; //n, m
+//        vector<vector<int>> arr(n, vector<int> (m)); //Вектор карт с числами
+//
+//        for (int cin1 = 0; cin1 < n; cin1++) { //Считываю
+//            for (int cin2 = 0; cin2 < m; cin2++) {
+//                cin >> arr[cin1][cin2];
+//            }
+//        }
+//        for (int x1 = 0; x1 < n; ) { //Алгоритм
+//            int cnt = 0;
+//            for (int x2 = 0; x2 < m; x2++) {
+//                res[i] += abs(arr[x1][x2] - arr[x1 + 1][x2]); //|a1 − b1| + |a2 − b2|+ ... +|am − bm|
+//                if (x1 < t - 2) { //Вот тут еще хрень
+//                    x1++;
+//                } else { cnt++; break; } //Входит в б.с цикл
+//            }
+//            if (cnt >= 1) { break; }
+//        }
+//    }
+//    for (int i = 0; i < t; i++) { //Ответ
+//        cout << res[i] << endl;
+//    }
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//
+//using namespace std;
+//
+//signed main() {
+//    int test; cin >> test;
+//
+//    while (test--) {
+//        int n; cin >> n;
+//        for (int i = 1; i <= n; i++) {
+//            cout << i * 2 << '\n';
+//        }
+//    }
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <string>
 
 using namespace std;
 
 signed main() {
-    int n, m; cin >> n >> m;
-    vector<pair<int, int>> arr(m);
-    vector<int> res;
+    int n; cin >> n;
 
-    for (int i = 0; i < m; i++) {
-        cin >> arr[i].first;
-        arr[i].second = i + 1;
-    }
-    sort(arr.begin(), arr.end());
-    reverse(arr.begin(), arr.end());
+    while (n--) {
+        string s; cin >> s;
+        int left = 0, right = s.size();
+        // если s четное
+        while (left <= s.size() / 2) {
+            pair<int, int> par;
 
-    for (int i = 0; i < m; i++) {
-        if (n - arr[i].first > 0) {
-            n -= arr[i].first;
-            res.push_back(arr[i].second);
-        }
-        else {
-            res.push_back(arr[i].second);
-
-            cout << res.size() << endl;
-            for (int j = 0; j < res.size(); j++) {
-                cout << res[j] << ' ';
+            if (s[left] == s[right] && par.first == par.second) {
+                par.first = left; par.second = right;
+                left++; right--;
             }
-            return 0;
+        }
+
+
+
+    }
+
+    return 0;
+}
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+signed main() {
+    string str; cin >> str;
+    int i = 0, j = 0;
+    char bukva;
+    for (int b = 0; b < str.size() - 1; b++) {
+        if (str[b] != '?') {
+            bukva = str[b];
+            break;
         }
     }
-    cout << -1;
+
+    while (i < str.size()) {
+
+    }
 
     return 0;
 }
