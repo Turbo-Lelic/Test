@@ -2284,6 +2284,7 @@ signed main() {
 
     return 0;
 }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
 #include <string>
 
@@ -2291,18 +2292,37 @@ using namespace std;
 
 signed main() {
     string str; cin >> str;
-    int i = 0, j = 0;
-    char bukva;
-    for (int b = 0; b < str.size() - 1; b++) {
+    int i = 0, j = 0, cnt = 0; // i - верхний указатель | j - нижний указатель
+    char bukva; // первое вхождение буквы
+
+    for (int b = 0; b <= str.size() - 1; b++) { // находим первую букву
         if (str[b] != '?') {
             bukva = str[b];
             break;
         }
     }
 
-    while (i < str.size()) {
+    while (i <= str.size() - 1) { // если i - верхний указатель не дошел до str.size()
+        while (true) { // двигаем i - верхний указатель
+            if (str[i] != bukva && str[i] != '?') {
+                bukva = str[i]; i--;
+                break;
+            }
+            else if (str[i] == bukva || str[i] == '?') {
+                i++;
+            }
+        }
+        cnt += ((i + 1) * (i + 2)) / 2; // сохраняем ответ в промежутке от j  - нижний указатель до i - верхний указатель
+        while (true) { // двигаем j - верхний указатель
+            
+        }
+    }
+    
+    while (true) { // удаляем повторные вхождения ? в промежутках
 
     }
+
+    cout << cnt;
 
     return 0;
 }
