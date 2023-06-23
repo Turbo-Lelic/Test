@@ -2202,9 +2202,6 @@
 //    return 0;
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Игра в казино
-//Надо сделать что при n = 0 сразу вывести 0 и исправить бесконечный цикл
-
 //#include <iostream>
 //#include <vector>
 //#include <math.h>
@@ -2212,35 +2209,46 @@
 //using namespace std;
 //
 //signed main() {
-//    int t; cin >> t; //Сколько тестов
-//    vector<int> res(t); //Вектор с ответом
+//    int t; cin >> t;
+//    vector<int> res;
 //
-//    for (int i = 0; i < t; i++) {
-//        int n, m; cin >> n >> m; //n, m
-//        vector<vector<int>> arr(n, vector<int> (m)); //Вектор карт с числами
+//    for (int cinn = 0; cinn < t; cinn++) {
+//        int n, m; cin >> n >> m;
+//        vector<vector<int>> arr(n, vector<int>(m));
 //
-//        for (int cin1 = 0; cin1 < n; cin1++) { //Считываю
+//        for (int cin1 = 0; cin1 < n; cin1++) {
 //            for (int cin2 = 0; cin2 < m; cin2++) {
 //                cin >> arr[cin1][cin2];
 //            }
 //        }
-//        for (int x1 = 0; x1 < n; ) { //Алгоритм
-//            int cnt = 0;
+//        int cnt = 0;
+//        for (int pls1 = 0, pls2 = 1; pls1 <= n - 2;) {
 //            for (int x2 = 0; x2 < m; x2++) {
-//                res[i] += abs(arr[x1][x2] - arr[x1 + 1][x2]); //|a1 − b1| + |a2 − b2|+ ... +|am − bm|
-//                if (x1 < t - 2) { //Вот тут еще хрень
-//                    x1++;
-//                } else { cnt++; break; } //Входит в б.с цикл
+//                cnt += abs(arr[pls1][x2] - arr[pls2][x2]);
 //            }
-//            if (cnt >= 1) { break; }
+//            if (pls2 != n - 1) {
+//                pls2++;
+//            } else if (pls2 == n - 1) {
+//                pls1++;
+//                pls2 = pls1 + 1;
+//            } 
 //        }
+//        res.push_back(cnt);
 //    }
-//    for (int i = 0; i < t; i++) { //Ответ
+//
+//    for (int i = 0; i < res.size(); i++) {
 //        cout << res[i] << endl;
 //    }
 //
 //    return 0;
 //}
+/*
+1 4 2 8 5
+7 9 2 1 4
+3 8 5 3 1
+1 3 4 6 6
+1 4 6 8 9
+*/
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //#include <iostream>
 //
@@ -2257,72 +2265,247 @@
 //    }
 //}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-signed main() {
-    int n; cin >> n;
-
-    while (n--) {
-        string s; cin >> s;
-        int left = 0, right = s.size();
-        // если s четное
-        while (left <= s.size() / 2) {
-            pair<int, int> par;
-
-            if (s[left] == s[right] && par.first == par.second) {
-                par.first = left; par.second = right;
-                left++; right--;
-            }
-        }
-
-
-
-    }
-
-    return 0;
-}
+//Проклятие Черной жемчужины
+//#include <iostream>
+//#include <string>
+//
+//using namespace std;
+//
+//#define int long long
+//
+//signed main() {
+//    string str; cin >> str;
+//    int i = 0, j = 0, res = 0, cnt = 0; // i - верхний указатель | j - нижний указатель
+//    char bukva = '?'; // первое вхождение буквы
+//
+//    for (int b = 0; b < str.size(); b++) { // находим первую букву
+//        if (str[b] != '?') {
+//            bukva = str[b];
+//            break;
+//        }
+//    }
+//    if (bukva == '?') {
+//        cout << ((str.size() + 1) * str.size()) / 2;
+//        return 0;
+//    }
+//
+//    while (i < str.size()) { // если i - верхний указатель не дошел до str.size()
+//        while (i < str.size()) { // двигаем i - верхний указатель
+//            if (str[i] != bukva && str[i] != '?') {
+//                bukva = str[i];
+//                break;
+//            } else if (str[i] == '?') {
+//                i++;
+//            } else {
+//                i++, cnt++;
+//            }
+//        }
+//        res += ((i - j + 1) * (i - j)) / 2; // сохраняем ответ в промежутке от j - нижний указатель до i - верхний указатель
+//        while (cnt > 0) { // двигаем j - верхний указатель
+//            if (str[j] != '?') {
+//                cnt--;
+//            }
+//            j++;
+//        }
+//        res -= ((i - j + 1) * (i - j)) / 2; // удаляем повторные вхождения ? в промежутках
+//    }
+//    int l_i = str.size() - 1;
+//    while (str[l_i] != bukva) {
+//        l_i--;
+//    }
+//
+//    res += (str.size() - l_i) * (str.size() - 1 - l_i) / 2;
+//    cout << res;
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//
+//using namespace std;
+//
+//signed main() {
+//    int a, b, t; cin >> a >> b >> t;
+//
+//    if ((a - t % a) % a < (b - t % b) % b) {
+//        cout << (a - t % a) % a;
+//    }
+//    else {
+//        cout << (b - t % b) % b;
+//    }
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//
+//using namespace std;
+//
+//signed main() {
+//    long long t, r, l, p1, p2, p3, i = 0, res = 0; cin >> t >> r >> l >> p1 >> p2 >> p3;
+//    vector<long long> arr = {p1, p2, p3};
+//
+//    while (t < r * l) {
+//        t += arr[i], res++, i++;
+//
+//        if (i == 3) {
+//            i = 0;
+//        }
+//    }
+//
+//    cout << res;
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//
+//using namespace std;
+//
+//signed main() {
+//    int n, k; cin >> n >> k;
+//    int res = n;
+//
+//    for (int i = 0; i < n + 1; i++) {
+//        for (int j = 0; j < n + 1 - i; j++) {
+//            if (i + j == 0) {
+//                continue;
+//            }
+//            int dist = i * k + j * (k + 1);
+//            if (dist % n == 0 && i + j < res) {
+//                res = i + j;
+//            }
+//        }
+//    }
+//
+//    cout << res;
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//
+//using namespace std;
+//
+//signed main() {
+//    int n, k, res = 0; cin >> n >> k;
+//
+//    for (int i = 0; i < n; i++) {
+//        int a; cin >> a;
+//
+//        while (a >= k * 2) {
+//            a /= 2, res += k;
+//        }
+//        res += a - 1;
+//    }
+//
+//    cout << res;
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//
+//using namespace std;
+//
+//#define int long long
+//
+//signed main() {
+//    int n1; cin >> n1;
+//    vector<int> arr1(n1);
+//    for (int i = 0; i < n1; i++) {
+//        cin >> arr1[i];
+//    }
+//
+//    int n2; cin >> n2;
+//    vector<int> arr2(n2);
+//    for (int i = 0; i < n2; i++) {
+//        cin >> arr2[i];
+//    }
+//
+//    int i1 = 0, j1 = 0;
+//    while (i1 < n1 && j1 < n2) {
+//        if (arr1[i1] > arr2[j1]) {
+//            j1++;
+//        }
+//        else if (arr1[i1] < arr2[j1]) {
+//            cout << arr1[i1] << ' '; i1++;
+//        }
+//        else if (arr1[i1] == arr2[j1]) {
+//            i1++, j1++;
+//        }
+//    }
+//    if (i1 != n1) {
+//        for (int i = i1; i < n1; i++) {
+//            cout << arr1[i] << ' ';
+//        }
+//    }
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <map>
+//
+//using namespace std;
+//
+//#define int long long 
+//
+//signed main() {
+//    int k, ans = 0, sum = 0; cin >> k;
+//    string s; cin >> s;
+//    int n = s.size();
+//    map<int, int>cnt;
+//
+//    for (int i = 0; i < n; i++) {
+//        if (s[i] == '1') {
+//            sum += 1;
+//        }
+//        if (sum == k) {
+//            ans += 1;
+//        }
+//        ans += cnt[sum - k]; cnt[sum]++;
+//    }
+//    cout << ans;
+//
+//    return 0;
+//}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//
+//using namespace std;
+//
+//signed main() {
+//    int n, ans = 0; cin >> n;
+//    vector<int> arr_n(n);
+//    for (int i1 = 0; i1 < n; i1++) {
+//        cin >> arr_n[i1];
+//    }
+//    int m; cin >> m;
+//    vector<int> arr_m(m);
+//    for (int i1 = 0; i1 < m; i1++) {
+//        cin >> arr_m[i1];
+//    }
+//    sort(arr_n.begin(), arr_n.end()), sort(arr_m.begin(), arr_m.end());
+//    int i = 0, j = 0;
+//    while (i < n && j < m) {
+//        if (arr_n[i] >= arr_m[j]) {
+//            ans++, j++;
+//        }
+//        i++;
+//    }
+//    cout << ans;
+//
+//    return 0;
+//}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <string>
 
 using namespace std;
 
 signed main() {
-    string str; cin >> str;
-    int i = 0, j = 0, cnt = 0; // i - верхний указатель | j - нижний указатель
-    char bukva; // первое вхождение буквы
-
-    for (int b = 0; b <= str.size() - 1; b++) { // находим первую букву
-        if (str[b] != '?') {
-            bukva = str[b];
-            break;
-        }
-    }
-
-    while (i <= str.size() - 1) { // если i - верхний указатель не дошел до str.size()
-        while (true) { // двигаем i - верхний указатель
-            if (str[i] != bukva && str[i] != '?') {
-                bukva = str[i]; i--;
-                break;
-            }
-            else if (str[i] == bukva || str[i] == '?') {
-                i++;
-            }
-        }
-        cnt += ((i + 1) * (i + 2)) / 2; // сохраняем ответ в промежутке от j  - нижний указатель до i - верхний указатель
-        while (true) { // двигаем j - верхний указатель
-            
-        }
-    }
-    
-    while (true) { // удаляем повторные вхождения ? в промежутках
-
-    }
-
-    cout << cnt;
 
     return 0;
 }
